@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onami Dojo - École de Combat Libre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a4480 0%, #2d5aa0 50%, #4a90a0 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .wave-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path d="M0,300 C300,200 600,400 1200,250 L1200,0 L0,0 Z" fill="%23ffffff" opacity="0.03"/><path d="M0,500 C400,350 800,550 1200,400 L1200,200 L0,200 Z" fill="%23ffffff" opacity="0.02"/><path d="M0,600 C200,450 400,650 600,500 C800,350 1000,700 1200,550 L1200,300 L0,300 Z" fill="%23ffffff" opacity="0.01"/></svg>') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(26, 68, 128, 0.8), rgba(74, 144, 160, 0.8));
+            overflow: hidden;
+            padding-bottom: 2rem;
+        }
+
+        .great-wave-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><defs><linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.4"/><stop offset="50%" style="stop-color:%23e0f0ff;stop-opacity:0.3"/><stop offset="100%" style="stop-color:%23b0d4ff;stop-opacity:0.2"/></linearGradient></defs><path d="M0,80 C100,20 200,140 400,80 C600,20 800,140 1000,80 C1100,50 1150,100 1200,80 L1200,300 L0,300 Z" fill="url(%23waveGrad)"/><path d="M0,120 C150,60 300,180 450,120 C600,60 750,180 900,120 C1050,60 1125,150 1200,120 L1200,300 L0,300 Z" fill="%23ffffff" opacity="0.15"/><path d="M-200,160 C-50,100 100,220 250,160 C400,100 550,220 700,160 C850,100 950,200 1100,160 C1150,140 1175,180 1200,160 L1200,300 L-200,300 Z" fill="%23ffffff" opacity="0.2"/></svg>') no-repeat center bottom;
+            background-size: cover;
+            z-index: 1;
+            animation: waveMove 8s ease-in-out infinite;
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+        }
+
+        .dojo-name {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #fff, #e0f0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 10;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 10;
+            position: relative;
+        }
+
+        .sensei-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #334466, #556677);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #2d4a6b, #4a6b8a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 3rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffffff, #e0f0ff);
+            color: #2d5aa0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            margin: 0 auto 1rem;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .background-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a4480 0%, #2d5aa0 50%, #4a90a0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-placeholder::after {
+            content: '🌊';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .sensei-info {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 2rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 68, 128, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 1rem;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section h2 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .calendar-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            overflow-x: auto;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-header {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .calendar-day {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .training-day {
+            background: rgba(255, 100, 100, 0.3);
+            border: 2px solid rgba(255, 150, 150, 0.5);
+        }
+
+        .training-day.kempo {
+            background: rgba(255, 150, 0, 0.3);
+            border: 2px solid rgba(255, 200, 0, 0.5);
+        }
+
+        .training-day.kyokushin {
+            background: rgba(0, 255, 150, 0.3);
+            border: 2px solid rgba(50, 255, 200, 0.5);
+        }
+
+        .training-day.kumite {
+            background: rgba(255, 0, 255, 0.3);
+            border: 2px solid rgba(255, 100, 255, 0.5);
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .schedule-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .discipline {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-radius: 20px;
+            border-left: 5px solid #fff;
+        }
+
+        .philosophy {
+            background: rgba(0,0,0,0.2);
+            padding: 3rem;
+            margin: 4rem 0;
+            border-radius: 20px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .contact {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .dojo-name {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            nav {
+                padding: 0.5rem;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+                justify-content: space-around;
+            }
+            
+            nav a {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.85rem;
+            }
+            
+            .calendar {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .calendar-header {
+                display: none;
+            }
+            
+            .calendar-day {
+                min-height: 60px;
+                padding: 0.75rem;
+                text-align: left;
+            }
+            
+            .calendar-day strong {
+                display: block;
+                margin-bottom: 0.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .calendar-day span, .calendar-day small {
+                font-size: 0.8rem;
+                display: block;
+                line-height: 1.2;
+            }
+            
+            .schedule {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .sensei-info {
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .dojo-name {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                width: 100%;
+            }
+            
+            nav a {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .calendar-container {
+                padding: 1rem;
+            }
+            
+            .schedule-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .image-placeholder {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-pattern"></div>
+    
+    <header>
+        <div class="great-wave-bg background-placeholder"></div>
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <div class="logo-placeholder">ONAMI</div>
+        </div>
+        <h1 class="dojo-name">大波道場<br>ONAMI DOJO</h1>
+        <p class="subtitle">École Japonaise de Combat Libre - Fondée en 1996</p>
+        <p class="subtitle" style="font-size: 1.2rem; margin-bottom: 1rem;">Budosport80 • Association sportive à but non lucratif</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 100%;">
+            <div class="sensei-info">
+                <div class="photo-placeholder">OL</div>
+                <h3>Olivier Leclercq - Sensei Fondateur</h3>
+                <p>1er Dan Karaté Kyokushin<br>
+                3ème Dan Kempo Karaté<br>
+                Country Representative WKB<br>
+                3ème Championnat du Monde WKB<br>
+                3ème Championnats d'Europe<br>
+                Multiples Champion de France</p>
+            </div>
+            <div class="sensei-info">
+                <div class="photo-placeholder">XG</div>
+                <h3>Xavier Gadoux - Sensei</h3>
+                <p>3ème Dan Karaté Kyokushin<br>
+                1er Dan Ju-Jitsu<br>
+                WKB Branch Chief<br>
+                World Kyokushin Budokai France</p>
+                <small style="opacity: 0.8;">Co-instructeur principal</small>
+            </div>
+        </div>
+        
+        <div style="margin-top: 3rem; background: rgba(0,0,0,0.2); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255,255,255,0.3);">
+            <h4 style="color: #ffffff; margin-bottom: 2rem; text-align: center; font-size: 1.4rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Instructeurs du Dojo</h4>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 15px; border: 2px solid rgba(255,255,255,0.3); transition: transform 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); flex: 1; min-width: 250px; max-width: 300px;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2d5aa0, #4a90a0); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); flex-shrink: 0;">MY</div>
+                        <div style="flex-grow: 1;">
+                            <h5 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #fff;">Marc Yeu</h5>
+                            <div style="font-size: 0.9rem; color: #e0f0ff; line-height: 1.3;">
+                                <strong>2ème Dan Kempo Karaté</strong><br>
+                                1er Dan Judo/Ju-Jitsu<br>
+                                1er Dan Aiki-Ju-Jitsu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 15px; border: 2px solid rgba(255,255,255,0.3); transition: transform 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); flex: 1; min-width: 250px; max-width: 300px;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2d5aa0, #4a90a0); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); flex-shrink: 0;">AB</div>
+                        <div style="flex-grow: 1;">
+                            <h5 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #fff;">Anibal Barreira</h5>
+                            <div style="font-size: 0.9rem; color: #e0f0ff; line-height: 1.3;">
+                                <strong>1er Dan Kempo Karaté</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 15px; border: 2px solid rgba(255,255,255,0.3); transition: transform 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); flex: 1; min-width: 250px; max-width: 300px;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2d5aa0, #4a90a0); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); flex-shrink: 0;">PT</div>
+                        <div style="flex-grow: 1;">
+                            <h5 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #fff;">Pierre Toussaint</h5>
+                            <div style="font-size: 0.9rem; color: #e0f0ff; line-height: 1.3;">
+                                <strong>1er Dan Kempo Karaté</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#horaires">Horaires</a></li>
+            <li><a href="#enfants">Enfants/Ados</a></li>
+            <li><a href="#kempo">Kempo</a></li>
+            <li><a href="#kyokushin">Kyokushin</a></li>
+            <li><a href="#traditions">Traditions</a></li>
+            <li><a href="#philosophie">Philosophie</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="horaires" class="section">
+        <h2>
+            Horaires d'Entraînement
+        </h2>
+        
+        <div class="calendar-container">
+            <h3 style="text-align: center; margin-bottom: 1rem;">Calendrier Hebdomadaire</h3>
+            <div class="calendar">
+                <div class="calendar-header">Lun</div>
+                <div class="calendar-header">Mar</div>
+                <div class="calendar-header">Mer</div>
+                <div class="calendar-header">Jeu</div>
+                <div class="calendar-header">Ven</div>
+                <div class="calendar-header">Sam</div>
+                <div class="calendar-header">Dim</div>
+                
+                <div class="calendar-day"></div>
+                <div class="calendar-day training-day kempo">
+                    <strong>MARDI</strong>
+                    <span>20h30</span>
+                    <small>Adultes</small>
+                    <small>Kempo/Kyoku</small>
+                </div>
+                <div class="calendar-day training-day" style="background: rgba(255, 200, 0, 0.3); border: 2px solid rgba(255, 220, 50, 0.5);">
+                    <strong>MERCREDI</strong>
+                    <span>16h-17h30</span>
+                    <small>Enfants</small>
+                    <span>17h30-19h15</span>
+                    <small>Ados</small>
+                </div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day training-day kyokushin">
+                    <strong>VENDREDI</strong>
+                    <span>20h30</span>
+                    <small>Adultes</small>
+                    <small>Kempo/Kyoku</small>
+                </div>
+                <div class="calendar-day training-day kumite">
+                    <strong>SAMEDI</strong>
+                    <span>19h30</span>
+                    <small>Kumite</small>
+                    <small>(Sur autorisation)</small>
+                </div>
+                <div class="calendar-day"></div>
+            </div>
+        </div>
+
+        <div class="schedule">
+            <div class="schedule-card kempo">
+                <h3> Mardi 20h30</h3>
+                <p><strong>Kempo & Kyokushin Adultes</strong></p>
+                <p>Entraînement technique et physique</p>
+                <p>Tous niveaux adultes</p>
+            </div>
+
+            <div class="schedule-card" style="background: rgba(255, 200, 0, 0.2); border: 2px solid rgba(255, 220, 50, 0.5);">
+                <h3>Mercredi 16h-17h30</h3>
+                <p><strong>Groupe Enfants</strong></p>
+                <p>Initiation Kempo & Kyokushin</p>
+                <p>Éveil martial et discipline</p>
+            </div>
+
+            <div class="schedule-card" style="background: rgba(255, 160, 0, 0.2); border: 2px solid rgba(255, 200, 50, 0.5);">
+                <h3>Mercredi 17h30-19h15</h3>
+                <p><strong>Groupe Ados</strong></p>
+                <p>Perfectionnement technique</p>
+                <p>Préparation aux grades</p>
+            </div>
+            
+            <div class="schedule-card kyokushin">
+                <h3>Vendredi 20h30</h3>
+                <p><strong>Kempo & Kyokushin Adultes</strong></p>
+                <p>Perfectionnement et application</p>
+                <p>Tous niveaux adultes</p>
+            </div>
+            
+            <div class="schedule-card kumite">
+                <h3>Samedi 19h30</h3>
+                <p><strong>Kumite Spécialisé</strong></p>
+                <p>Combat et applications</p>
+                <p><em>Sur autorisation du Sensei</em></p>
+                <p><small>Accessible selon assiduité et niveau</small></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="enfants" class="section">
+        <h2>
+            Cours Enfants & Ados
+        </h2>
+        <div class="discipline">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="image-placeholder" style="width: 100%; max-width: 500px; height: 250px; border-radius: 15px;">👥</div>
+            </div>
+            <h3>Mercredi - Entraînements Jeunes</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div style="background: rgba(255, 200, 0, 0.15); padding: 2rem; border-radius: 15px; border: 2px solid rgba(255, 220, 50, 0.3);">
+                    <h4>Groupe 1 - Enfants</h4>
+                    <p><strong>Mercredi : 16h00 - 17h30</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Initiation aux arts martiaux</li>
+                        <li>Développement de la coordination</li>
+                        <li>Apprentissage du respect et de la discipline</li>
+                        <li>Jeux éducatifs et techniques de base</li>
+                        <li>Éveil corporel et mental</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255, 160, 0, 0.15); padding: 2rem; border-radius: 15px; border: 2px solid rgba(255, 200, 50, 0.3);">
+                    <h4>Groupe 2 - Ados</h4>
+                    <p><strong>Mercredi : 17h30 - 19h15</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Techniques avancées Kempo & Kyokushin</li>
+                        <li>Préparation aux passages de grades</li>
+                        <li>Renforcement physique adapté</li>
+                        <li>Applications martiales contrôlées</li>
+                        <li>Développement de la confiance en soi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; text-align: center;">
+                <h4>Objectifs Pédagogiques</h4>
+                <p>Nos cours jeunes allient tradition martiale japonaise et pédagogie moderne. Nous développons chez les enfants et adolescents les valeurs du respect, de la persévérance et du dépassement de soi, tout en leur enseignant des techniques efficaces adaptées à leur âge.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px;">
+                        <strong>Discipline</strong><br>
+                        <small>Respect des règles</small>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px;">
+                        <strong>Confiance</strong><br>
+                        <small>Estime de soi</small>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px;">
+                        <strong>Technique</strong><br>
+                        <small>Gestes précis</small>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px;">
+                        <strong>Esprit</strong><br>
+                        <small>Valeurs martiales</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kempo" class="section">
+        <h2>
+            Kempo Karaté
+        </h2>
+        <div class="discipline">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="image-placeholder" style="width: 100%; max-width: 400px; height: 200px; border-radius: 15px;">🥋</div>
+            </div>
+            <h3>Le Karaté MMA - Frappes et Projections</h3>
+            <p><strong>Kempo Karaté, le Karaté MMA avec frappes et projections</strong> - Notre école japonaise de combat libre forme des combattants polyvalents qui participent aux compétitions de Karaté de plein contact et de combat libre.</p>
+            
+            <h4>Caractéristiques du Kempo Karaté :</h4>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>Techniques complètes :</strong> Frappes variées (poings, pieds, coudes, genoux)</li>
+                <li><strong>Projections et takedowns :</strong> Intégration des techniques de projection</li>
+                <li><strong>Combat mixte :</strong> Distance, corps-à-corps et sol</li>
+                <li><strong>Applications pratiques :</strong> Techniques efficaces en situation réelle</li>
+                <li><strong>Compétitions :</strong> Succès en Sanda, Kung-Fu, Kudo Daïdo-Juku, Vo-Thuat</li>
+                <li><strong>Méthode traditionnelle :</strong> Entraînement dur et authentique</li>
+            </ul>
+            
+            <p><strong>Palmarès :</strong> Environ 8 Coupes de France dans diverses disciplines martiales, témoignant de l'efficacité de notre méthode d'entraînement.</p>
+        </div>
+    </section>
+
+    <section id="kyokushin" class="section">
+        <h2>
+            Kyokushin Karaté
+        </h2>
+        <div class="discipline">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="image-placeholder" style="width: 100%; max-width: 400px; height: 200px; border-radius: 15px;">⚡</div>
+            </div>
+            <h3>Le Karaté Full Contact de Sosai Mas Oyama</h3>
+            <p><strong>Karaté Kyokushin, le Karaté Full Contact de Sosai Mas Oyama</strong> - Reconnu mondialement pour sa rigueur et son efficacité en combat, retrouvez les karatés de combat au Onami Dojo !</p>
+            
+            <h4>Spécificités du Kyokushin :</h4>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>Combat full contact :</strong> Affrontement sans protection, frappes réelles</li>
+                <li><strong>Katas traditionnels :</strong> Formes et applications martiales</li>
+                <li><strong>Renforcement :</strong> Développement physique et mental extrême</li>
+                <li><strong>Tameshiwari :</strong> Techniques de casse pour tester la puissance</li>
+                <li><strong>Compétitions WKB :</strong> Préparation aux championnats internationaux</li>
+                <li><strong>Esprit Osu :</strong> Persévérance et dépassement de soi</li>
+            </ul>
+            
+            <h4>World Kyokushin Budokai (WKB) :</h4>
+            <p>Notre dojo est officiellement affilié à la WKB, garantissant un enseignement authentique selon les standards de Sosai Mas Oyama et la reconnaissance internationale des grades. Olivier Leclercq est Country Representative WKB pour la France.</p>
+            
+            <h4>Jissen-Karaté - Combat Réel :</h4>
+            <p>Nous pratiquons le Jissen-Karaté, l'approche du combat réel du Kyokushin, mettant l'accent sur l'efficacité martiale authentique et le plein contact.</p>
+        </div>
+    </section>
+
+    <section id="traditions" class="section">
+        <h2>
+            Traditions & Palmarès
+        </h2>
+        <div class="discipline">
+            <h4>Rituels Traditionnels Japonais :</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; border-left: 3px solid #fff;">
+                    <h5>Kagami Biraki</h5>
+                    <p>Cérémonie de début d'année traditionnelle</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; border-left: 3px solid #fff;">
+                    <h5>Kangeiko</h5>
+                    <p>Entraînements intensifs d'hiver</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; border-left: 3px solid #fff;">
+                    <h5>Shochugeiko</h5>
+                    <p>Sessions d'été de renforcement</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; border-left: 3px solid #fff;">
+                    <h5>Taikai</h5>
+                    <p>Soirées combats inter-écoles</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <div class="image-placeholder" style="width: 100%; max-width: 400px; height: 200px; border-radius: 15px;">🏆</div>
+            </div>
+            <h4>Palmarès Compétitif :</h4>
+            <p>Le Onami Dojo a remporté de nombreuses victoires en compétitions nationales et internationales :</p>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>Environ 8 Coupes de France</strong> dans diverses disciplines</li>
+                <li>Succès en <strong>Sanda, Kung-Fu, Kudo Daïdo-Juku, Vo-Thuat</strong></li>
+                <li>Reconnaissance dans le combat libre et arts martiaux mixtes</li>
+                <li>Formation de compétiteurs de haut niveau</li>
+            </ul>
+            
+            <p><em>Ces succès témoignent de la qualité de notre enseignement et de l'efficacité de nos méthodes d'entraînement traditionnelles.</em></p>
+        </div>
+    </section>
+
+    <section id="philosophie" class="section">
+        <h2>Philosophie du Dojo</h2>
+        <div class="philosophy">
+            <div style="position: relative; margin-bottom: 2rem;">
+                <div style="width: 300px; height: 200px; margin: 0 auto 1rem; border-radius: 15px; border: 2px solid rgba(255,255,255,0.3); overflow: hidden;">
+                    <img src="great-wave-kanagawa.jpg" alt="La Grande Vague de Kanagawa" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <h3>"大波" - ONAMI - La Grande Vague</h3>
+                <p>Comme la Grande Vague de Kanagawa d'Hokusai, notre enseignement puise sa force dans la tradition japonaise millénaire. Nous cultivons la puissance, la persévérance et l'humilité.</p>
+            </div>
+            
+            <p><strong>Notre Mission depuis 1996 :</strong><br>
+            Épanouissement personnel à travers les arts martiaux<br>
+            Développement de la rigueur, persévérance et humilité<br>
+            Dépassement de soi dans le respect des traditions japonaises<br>
+            Accueil de tous niveaux, des débutants aux compétiteurs</p>
+            
+            <div style="background: rgba(0,0,0,0.3); padding: 2rem; margin: 2rem 0; border-radius: 15px; border: 3px solid rgba(255,255,255,0.4); text-align: center;">
+                <p style="font-size: 1.5rem; font-weight: bold; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin: 0;"><em>"Dans la difficulté se forge le caractère du vrai guerrier"</em></p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 3rem 0;">
+            <h4>Valeurs du Dojo Onami :</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div class="schedule-card">
+                    <h4>礼 - REI</h4>
+                    <p>Respect et courtoisie</p>
+                </div>
+                <div class="schedule-card">
+                    <h4>忍 - NIN</h4>
+                    <p>Persévérance</p>
+                </div>
+                <div class="schedule-card">
+                    <h4>力 - CHIKARA</h4>
+                    <p>Force et détermination</p>
+                </div>
+                <div class="schedule-card">
+                    <h4>心 - KOKORO</h4>
+                    <p>Esprit et courage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact">
+            <h2>Contact</h2>
+            <h3>Onami Dojo - École de Combat Libre</h3>
+            <p><strong>Kempo Karaté & Kyokushin Karaté</strong></p>
+            <p><em>"Retrouvez les karatés de combat au Onami Dojo !"</em></p>
+            <p>Dirigé par Olivier Leclercq et Xavier Gadoux</p>
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="image-placeholder" style="width: 100%; max-width: 500px; height: 250px; border-radius: 15px;">🏛️</div>
+            </div>
+            <div style="margin: 2rem 0; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px;">
+                <h4>Adresse du Dojo</h4>
+                <p style="font-size: 1.2rem; margin: 1rem 0;"><strong>12 rue Colbert, Amiens</strong></p>
+                <p style="font-size: 1.1rem;"><strong> +33 7 66 22 27 45</strong></p>
+                <p><strong> olive@alliancepaintball.com</strong></p>
+            </div>
+            
+            <p><em>Pour plus d'informations sur les créneaux et inscriptions,<br>
+            contactez le dojo directement.</em></p>
+        </div>
+    </section>
+
+    <script>
+        // Animation simple pour les éléments au scroll
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.schedule-card, .discipline');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+  Fichiers d'images à créer avec prompts :
+
+  1. onami-logo.png (80x80px)
+    - Prompt : "Logo moderne et élégant pour un dojo d'arts martiaux
+  japonais. Incorporer une vague stylisée inspirée de la Grande Vague de
+  Kanagawa, avec les caractères japonais 大波 (Onami). Style minimaliste,
+  couleurs bleu marine et blanc, fond transparent."
+  2. great-wave-bg.jpg (format large paysage)
+    - Prompt : "Réinterprétation artistique de la Grande Vague de Kanagawa
+   d'Hokusai, adaptée pour un dojo d'arts martiaux moderne. Couleurs bleu
+  profond et blanc, style dynamique et puissant, atmosphère martiale
+  japonaise traditionnelle."
+  3. great-wave-philosophy.jpg (40x40px)
+    - Prompt : "Petite icône minimaliste de vague japonaise, style épuré,
+  couleurs harmonieuses avec le thème du site (bleus et blancs),
+  utilisable comme symbole de philosophie martiale."
+  4. kids-training.jpg (500x250px)
+    - Prompt : "Illustration d'enfants et adolescents pratiquant le karaté
+   dans un dojo traditionnel japonais. Atmosphere bienveillante et
+  éducative, enfants en kimono blanc, techniques de base, esprit
+  d'apprentissage et de discipline."
+  5. kempo-illustration.png (400x200px)
+    - Prompt : "Illustration dynamique des techniques de Kempo Karaté :
+  combattant exécutant frappes et projections, style MMA traditionnel
+  japonais, mouvement fluide, énergie martiale, couleurs harmonieuses avec
+   le thème du site."
+  6. kyokushin-illustration.png (400x200px)
+    - Prompt : "Illustration puissante du Kyokushin Karaté : karatéka en
+  position de combat full contact, symbole Kyokushin subtil, force et
+  détermination, style traditionnel japonais, atmosphere intense et
+  respectueuse."
+  7. competition-trophies.jpg (400x200px)
+    - Prompt : "Collection de trophées et médailles d'arts martiaux,
+  coupes dorées et argentées, rubans tricolores, palmares sportif,
+  atmosphere de réussite et accomplissement, style photographique
+  réaliste."
+  8. dojo-interior.jpg (500x250px)
+    - Prompt : "Intérieur authentique d'un dojo d'arts martiaux japonais :
+   tatamis, miroirs, équipements d'entraînement, calligraphies japonaises
+  au mur, atmosphere traditionnelle et respectueuse, éclairage
+  chaleureux."
+
+  Photos des sensei (à fournir) :
+
+  - sensei-olivier.jpg - Photo d'Olivier Leclercq (format carré)
+  - sensei-xavier.jpg - Photo de Xavier Gadoux (format carré)

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onami Dojo - Semainier</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .week-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            background: #ecf0f1;
+            padding: 2px;
+        }
+        
+        .day-column {
+            background: white;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .day-header {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .day-content {
+            flex: 1;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .course {
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9em;
+            line-height: 1.3;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .course-title {
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+        
+        .course-time {
+            font-size: 0.9em;
+            margin-bottom: 3px;
+        }
+        
+        .course-location {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+        
+        /* Couleurs pour différents types de cours */
+        .kempo-adults {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .kyokushin-adults {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+        
+        .kumite {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+        
+        .kempo-kids {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        .kempo-teens {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        /* Section des formulaires */
+        .forms-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+        }
+
+        .forms-section h2, .equipment-section h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .forms-section p, .equipment-section p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .downloads {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .download-card:hover::before {
+            left: 100%;
+        }
+
+        .download-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .download-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .download-button {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover .download-button {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Section des équipements */
+        .equipment-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+        }
+
+        .equipment-card {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+        }
+
+        .customization-card {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%) !important;
+        }
+
+        .equipment-card:hover, .customization-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-section {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .info-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-card h3 {
+            margin-top: 0;
+            color: #3498db;
+            font-size: 1.2em;
+        }
+        
+        .instructor {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 5px;
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .special-note {
+            background: #e67e22;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+        
+        @media (max-width: 1200px) {
+            .week-calendar {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .day-column {
+                min-height: auto;
+            }
+            
+            .day-header {
+                font-size: 1.2em;
+                padding: 20px;
+            }
+            
+            .course {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header h1 { font-size: 2em; }
+            .info-grid { grid-template-columns: 1fr; }
+            .downloads { grid-template-columns: 1fr; }
+            .forms-section, .equipment-section { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥋 ONAMI DOJO</h1>
+            <p>Semainier des Cours 2025-2026</p>
+        </div>
+        <div class="week-calendar">
+            <!-- LUNDI -->
+            <div class="day-column">
+                <div class="day-header">LUNDI</div>
+                <div class="day-content">
+                    <div class="course kempo-adults">
+                        <div class="course-title">KEMPO KARATÉ</div>
+                        <div>Adultes & Ados</div>
+                        <div class="course-time">19h30 - 21h00</div>
+                        <div class="course-location">📍 Dojo de la Providence</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 08 septembre
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MARDI -->
+            <div class="day-column">
+                <div class="day-header">MARDI</div>
+                <div class="day-content">
+                    <div class="course kyokushin-adults">
+                        <div class="course-title">KARATÉ KYOKUSHIN</div>
+                        <div>Adultes & Ados</div>
+                        <div class="course-time">20h30 - 22h00</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 09 septembre
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MERCREDI -->
+            <div class="day-column">
+                <div class="day-header">MERCREDI</div>
+                <div class="day-content">
+                    <div class="course kempo-kids">
+                        <div class="course-title">KEMPO KARATÉ</div>
+                        <div>Enfants - 13ans</div>
+                        <div class="course-time">16h00 - 17h30</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 10 septembre
+                        </div>
+                    </div>
+                    
+                    <div class="course kempo-teens">
+                        <div class="course-title">KEMPO KARATÉ</div>
+                        <div>Ados 13ans et +</div>
+                        <div class="course-time">17h45 - 19h15</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 10 septembre
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- JEUDI -->
+            <div class="day-column">
+                <div class="day-header">JEUDI</div>
+                <div class="day-content">
+                    <div class="course kempo-adults">
+                        <div class="course-title">KEMPO KARATÉ</div>
+                        <div>Adultes & Ados</div>
+                        <div class="course-time">20h30 - 22h00</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 04 septembre
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- VENDREDI -->
+            <div class="day-column">
+                <div class="day-header">VENDREDI</div>
+                <div class="day-content">
+                    <div class="course kyokushin-adults">
+                        <div class="course-title">KARATÉ KYOKUSHIN</div>
+                        <div>Adultes & Ados</div>
+                        <div class="course-time">20h30 - 22h00</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 05 septembre
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SAMEDI -->
+            <div class="day-column">
+                <div class="day-header">SAMEDI</div>
+                <div class="day-content">
+                    <div class="course kumite">
+                        <div class="course-title">PRÉPARATION PHYSIQUE</div>
+                        <div>KUMITE</div>
+                        <div style="font-size: 0.8em; margin: 5px 0;">Ados & Adultes - Kempo & Kyokushin</div>
+                        <div class="course-time">19h00 - 20h15</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 20 septembre
+                        </div>
+                        <div class="special-note">
+                            ⚠️ Sur autorisation selon assiduité et niveau
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- DIMANCHE -->
+            <div class="day-column">
+                <div class="day-header">DIMANCHE</div>
+                <div class="day-content">
+                    <div class="course kempo-kids">
+                        <div class="course-title">KEMPO KARATÉ</div>
+                        <div>Enfants</div>
+                        <div class="course-time">10h00 - 11h30</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 14 septembre
+                        </div>
+                    </div>
+                    
+                    <div class="course kempo-teens">
+                        <div class="course-title">KEMPO KARATÉ</div>
+                        <div>Ados</div>
+                        <div class="course-time">10h00 - 11h30</div>
+                        <div class="course-location">📍 Dojo Budosport80</div>
+                        <div style="margin-top: 8px; font-size: 0.8em; opacity: 0.9;">
+                            Reprise : 14 septembre
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section des formulaires -->
+        <div class="forms-section">
+            <h2>📋 Formulaires d'inscription</h2>
+            <p>Téléchargez les formulaires nécessaires pour votre inscription</p>
+            
+            <div class="downloads">
+                <a href="licence-ffk-2025-2026.pdf" class="download-card" download>
+                    <div class="download-icon">📄</div>
+                    <h3>Demande de Licence FFK</h3>
+                    <p>Formulaire officiel de la Fédération Française de Karaté<br>
+                    <strong>Saison 2025/2026</strong></p>
+                    <div class="download-button">
+                        <span>📥 Télécharger PDF</span>
+                    </div>
+                </a>
+
+                <a href="inscription-onami-2025-2026.pdf" class="download-card" download>
+                    <div class="download-icon">🥋</div>
+                    <h3>Inscription Onami Dojo</h3>
+                    <p>Formulaire d'inscription au club<br>
+                    <strong>Kempo & Kyokushin - 2025/2026</strong></p>
+                    <div class="download-button">
+                        <span>📥 Télécharger PDF</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Section Équipements -->
+        <div class="equipment-section">
+            <h2>🛡️ Équipements & Personnalisations</h2>
+            <p>Découvrez nos équipements de protection et services de personnalisation</p>
+            
+            <div class="downloads">
+                <a href="equipements-protection-onami.pdf" class="download-card equipment-card" download>
+                    <div class="download-icon">🥋</div>
+                    <h3>Équipements de Protection</h3>
+                    <p>Gants, protège-tibias, casques, coquilles, dogi blanc<br>
+                    <strong>Catalogue complet avec tarifs</strong></p>
+                    <div class="download-button">
+                        <span>📥 Voir le Catalogue</span>
+                    </div>
+                </a>
+
+                <a href="personnalisations-broderies-onami.pdf" class="download-card customization-card" download>
+                    <div class="download-icon">✨</div>
+                    <h3>Personnalisations & Broderies</h3>
+                    <p>Broderies sur ceintures, dogi, accessoires<br>
+                    <strong>Tarifs et emplacements disponibles</strong></p>
+                    <div class="download-button">
+                        <span>📥 Voir les Options</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🥋 À propos du Dojo</h3>
+                    <p><strong>Kempo Karaté</strong> - École japonaise de combat libre</p>
+                    <p>Les combattants participent aux compétitions de Karaté de plein contact et combat libre</p>
+                    
+                    <div class="instructor">
+                        <strong>Olivier Leclercq</strong><br>
+                        Professeur - 3ème Championnat Monde WKB<br>
+                        5 podiums aux Championnats d'Europe<br>
+                        Vice Champion d'Europe 2023 et 2024
+                    </div>
+                    
+                    <div class="instructor">
+                        <strong>Marc Yeu</strong><br>
+                        2ème Dan
+                    </div>
+                    
+                    <div class="instructor">
+                        <strong>Anibal Barreira</strong><br>
+                        1er Dan
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>Kyokushin Karaté</strong> - Karaté traditionnel de contact</p>
+                    
+                    <div class="instructor">
+                        <strong>Xavier</strong><br>
+                        3ème Dan - Champion de France<br>
+                        WKB Branch Chief - World Kyokushin Budokai France<br>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>📍 Lieux d'entraînement</h3>
+                    <p><strong>Dojo de la Providence</strong><br>
+                    Cours du lundi<br>
+                    École de la Providence<br>
+                    3ème étage (face à la piscine)<br>
+                    Amiens</p>
+                    
+                    <p><strong>Dojo Budosport80</strong><br>
+                    Tous les autres cours<br>
+                    12, rue Colbert<br>
+                    80000 Amiens<br>
+                    Tél : 07 66 22 27 45</p>
+                </div>
+                <div class="info-card">
+                    <h3>🎯 Informations Pratiques</h3>
+                    <p><strong>🆓 Offre découverte :</strong><br>
+                    2 cours d'essai offerts pour chaque section</p>
+                    
+                    <p><strong>⚠️ Cours du samedi :</strong><br>
+                    Sur autorisation selon assiduité aux autres cours et niveau/progression</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
