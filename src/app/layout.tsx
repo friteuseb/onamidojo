@@ -46,8 +46,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
-        className={`${inter.variable} ${notoSerifJP.variable} antialiased`}
+        className={`${inter.variable} ${notoSerifJP.variable} font-sans antialiased`}
       >
         {children}
       </body>

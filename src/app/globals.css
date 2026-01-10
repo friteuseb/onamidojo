@@ -16,12 +16,20 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure serif font class works */
+.font-serif {
+  font-family: var(--font-serif), "Noto Serif JP", Georgia, ui-serif, serif;
 }
 
 /* Custom scrollbar */
