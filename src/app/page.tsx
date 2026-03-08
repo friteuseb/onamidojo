@@ -89,14 +89,14 @@ const scheduleData = [
 // --- Instructors Data ---
 const instructors = [
   {
-    name: "Olivier Leclercq",
+    name: "Senseï Olivier Leclerc",
     role: "Directeur Technique - Kempo",
     rank: "Ceinture Noire",
     achievements: ["3ème au Championnat du Monde WKB", "5x Podium Européen", "Vice-Champion d'Europe 2023 & 2024"],
     image: "/images/instructors/olivier.jpg",
   },
   {
-    name: "Xavier",
+    name: "Senseï Xavier Gadoux",
     role: "Responsable Kyokushin",
     rank: "3ème Dan",
     achievements: ["Champion de France", "WKB Branch Chief", "World Kyokushin Budokai France"],
