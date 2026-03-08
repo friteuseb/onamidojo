@@ -13,6 +13,7 @@ import {
   Download
 } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
+import { articles } from '@/data/articles';
 
 // --- Custom Components ---
 
@@ -467,6 +468,72 @@ export default function OnamiDojoHome() {
                 <p><strong>Email :</strong> <a href="mailto:contact@onamidojo.fr" className="text-red-700 hover:underline">contact@onamidojo.fr</a></p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-24 bg-[#efede8] border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title="Nos Articles"
+            subtitle="Conseils & Techniques"
+            japanese="記事"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
+            {articles.filter(a => a.image).slice(0, 6).map((article) => (
+              <Link
+                key={article.slug}
+                href={`/blog/${article.slug}`}
+                className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className="aspect-[16/10] relative overflow-hidden">
+                  {article.image && (
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  )}
+                  <div className="absolute top-3 left-3">
+                    <span className={`text-[10px] px-3 py-1 font-bold uppercase tracking-widest rounded-full ${
+                      article.category === 'kyokushin' ? 'bg-slate-800 text-white' :
+                      article.category === 'kempo' ? 'bg-red-700 text-white' :
+                      article.category === 'enfants' ? 'bg-purple-700 text-white' :
+                      article.category === 'competition' ? 'bg-orange-600 text-white' :
+                      'bg-indigo-900 text-white'
+                    }`}>
+                      {article.categoryLabel}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5 md:p-6">
+                  <h3 className="text-lg font-serif font-bold text-slate-900 mb-2 group-hover:text-red-700 transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-3">
+                    {article.description}
+                  </p>
+                  <span className="text-red-700 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Lire la suite
+                    <ChevronRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-950 text-white font-bold rounded-sm hover:bg-red-700 transition-all shadow-lg"
+            >
+              Voir tous les articles
+              <ChevronRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
