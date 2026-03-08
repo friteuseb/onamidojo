@@ -250,7 +250,7 @@ export default function OnamiDojoHome() {
               </div>
               <div className="p-6 md:p-8">
                 <p className="text-slate-600 mb-6 leading-relaxed">
-                  L&apos;école de l&apos;ultime vérité. Un style réputé pour sa rigueur physique et ses frappes à pleine puissance. Forgez un corps de fer et un mental d&apos;acier à travers la tradition du Sosai Mas Oyama.
+                  L&apos;école de l&apos;ultime vérité. Un style à frappes réelles, réputé pour sa rigueur physique. Forgez un corps de fer et un mental d&apos;acier à travers la tradition de Sosai Mas Oyama.
                 </p>
                 <ul className="space-y-3 mb-6">
                   {['Conditionnement physique intensif', 'Technique traditionnelle (Kihon)', 'Katas et Bunkai', 'Kumite plein contact'].map((item) => (
