@@ -8,14 +8,11 @@ import {
   ShieldCheck,
   Award,
   Flame,
-  Calendar,
   Phone,
   Mail,
-  Instagram,
-  Facebook,
-  Menu,
   Download
 } from 'lucide-react';
+import ContactForm from '@/components/ContactForm';
 
 // --- Custom Components ---
 
@@ -125,35 +122,6 @@ const instructors = [
 export default function OnamiDojoHome() {
   return (
     <div className="min-h-screen bg-[#faf9f6] text-slate-900 selection:bg-indigo-100 selection:text-indigo-900 font-sans overflow-x-hidden">
-
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-[#faf9f6]/90 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-indigo-950 rounded-full flex items-center justify-center">
-                <span className="text-white font-serif font-bold text-xl">大</span>
-              </div>
-              <div>
-                <span className="block text-xl font-serif font-black tracking-tight text-indigo-950 leading-none">ONAMI DOJO</span>
-                <span className="block text-[10px] tracking-[0.2em] text-red-700 font-bold uppercase">Kempo & Kyokushin</span>
-              </div>
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="#disciplines" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Disciplines</Link>
-              <Link href="#instructeurs" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Instructeurs</Link>
-              <Link href="#horaires" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Horaires</Link>
-              <Link href="#dojos" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Nos Dojos</Link>
-              <Link href="#contact" className="bg-indigo-950 text-white px-6 py-2.5 rounded-sm font-bold hover:bg-red-700 transition-all duration-300 shadow-md">
-                Essai Gratuit
-              </Link>
-            </div>
-            <button className="md:hidden p-2 text-indigo-950">
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <header className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-indigo-950">
@@ -568,106 +536,12 @@ export default function OnamiDojoHome() {
               <div className="absolute -inset-4 bg-red-700/5 -rotate-2 rounded-2xl hidden md:block"></div>
               <div className="relative bg-white p-6 md:p-10 shadow-2xl border border-slate-100 rounded-sm">
                 <h3 className="text-xl md:text-2xl font-serif font-bold text-indigo-950 mb-8">Réserver un cours d&apos;essai</h3>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Prénom</label>
-                      <input type="text" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="Votre prénom" />
-                    </div>
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Nom</label>
-                      <input type="text" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="Votre nom" />
-                    </div>
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Email</label>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="votre@email.com" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Téléphone</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="06 XX XX XX XX" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Discipline souhaitée</label>
-                    <select className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none appearance-none cursor-pointer">
-                      <option>Kempo Karaté</option>
-                      <option>Kyokushin Karaté</option>
-                      <option>Cours Enfants (6-13 ans)</option>
-                      <option>Cours Ados (13+ ans)</option>
-                    </select>
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Message (optionnel)</label>
-                    <textarea className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none h-24 resize-none" placeholder="Précisez votre niveau, vos disponibilités..."></textarea>
-                  </div>
-                  <button type="submit" className="w-full bg-indigo-950 text-white font-bold py-4 rounded-sm shadow-lg hover:bg-red-700 transition-all mt-4">
-                    Envoyer ma demande
-                  </button>
-                  <p className="text-[11px] text-slate-400 text-center mt-4">
-                    En soumettant ce formulaire, vous acceptez d&apos;être contacté pour organiser votre essai.
-                  </p>
-                </form>
+                <ContactForm />
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-indigo-950 text-white pt-16 md:pt-20 pb-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
-            <div className="sm:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-indigo-950">
-                  <span className="font-serif font-bold text-lg">大</span>
-                </div>
-                <span className="text-2xl font-serif font-black tracking-tight">ONAMI DOJO</span>
-              </div>
-              <p className="text-indigo-200 max-w-sm mb-8 text-sm md:text-base">
-                Le dojo de la &quot;Grande Vague&quot; (Onami - 大波) symbolise la force irrésistible et le rythme éternel de la mer, des valeurs fondamentales de notre pratique martiale à Amiens.
-              </p>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-serif font-bold mb-6">Navigation</h4>
-              <ul className="space-y-3 md:space-y-4 text-indigo-200 text-sm">
-                <li><Link href="#disciplines" className="hover:text-white transition-colors">Nos Disciplines</Link></li>
-                <li><Link href="#instructeurs" className="hover:text-white transition-colors">Les Instructeurs</Link></li>
-                <li><Link href="#horaires" className="hover:text-white transition-colors">Planning des Cours</Link></li>
-                <li><Link href="#dojos" className="hover:text-white transition-colors">Nos Dojos</Link></li>
-                <li><Link href="#contact" className="hover:text-white transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-serif font-bold mb-6">Informations</h4>
-              <ul className="space-y-3 md:space-y-4 text-indigo-200 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Mentions Légales</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Politique de Confidentialité</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Règlement Intérieur</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-indigo-400 text-xs">
-              © {new Date().getFullYear()} Onami Dojo Amiens. Tous droits réservés.
-            </p>
-            <p className="text-indigo-400 text-xs">
-              Club affilié à la Fédération Française de Karaté (FFK)
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
