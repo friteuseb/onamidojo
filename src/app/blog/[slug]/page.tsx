@@ -120,17 +120,7 @@ export default async function ArticlePage({
 
         {/* Article Content */}
         <div
-          className="prose prose-slate prose-lg max-w-none
-            prose-headings:font-serif prose-headings:text-slate-900
-            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-l-4 prose-h2:border-red-700 prose-h2:pl-4
-            prose-p:text-slate-600 prose-p:leading-relaxed
-            prose-strong:text-slate-800
-            prose-blockquote:border-l-4 prose-blockquote:border-indigo-900 prose-blockquote:bg-indigo-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-sm prose-blockquote:not-italic
-            prose-ul:space-y-2
-            prose-li:text-slate-600
-            prose-a:text-red-700 prose-a:no-underline hover:prose-a:underline
-            prose-hr:border-slate-200 prose-hr:my-8
-            prose-em:text-slate-700"
+          className="article-content"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 

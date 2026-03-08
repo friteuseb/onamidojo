@@ -63,3 +63,109 @@ body {
 .animate-wave {
   animation: wave 3s ease-in-out infinite;
 }
+
+/* --- Article Content Styles --- */
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #475569;
+  max-width: none;
+}
+
+.article-content h2 {
+  font-family: var(--font-serif), "Noto Serif JP", Georgia, ui-serif, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 4px solid #b91c1c;
+}
+
+.article-content h3 {
+  font-family: var(--font-serif), "Noto Serif JP", Georgia, ui-serif, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  color: #475569;
+  line-height: 1.8;
+}
+
+.article-content strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.article-content em {
+  color: #334155;
+}
+
+.article-content a {
+  color: #b91c1c;
+  text-decoration: none;
+}
+
+.article-content a:hover {
+  text-decoration: underline;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: decimal;
+}
+
+.article-content li {
+  color: #475569;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.article-content li::marker {
+  color: #b91c1c;
+}
+
+.article-content blockquote {
+  border-left: 4px solid #1e1b4b;
+  background-color: #eef2ff;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.article-content blockquote p {
+  color: #312e81;
+  margin-bottom: 0;
+}
+
+.article-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.article-content hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  margin: 1.5rem 0;
+}
