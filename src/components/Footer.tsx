@@ -32,7 +32,7 @@ export default function Footer() {
               <li><Link href="/#disciplines" className="hover:text-white transition-colors">Nos Disciplines</Link></li>
               <li><Link href="/#instructeurs" className="hover:text-white transition-colors">Les Instructeurs</Link></li>
               <li><Link href="/#horaires" className="hover:text-white transition-colors">Planning des Cours</Link></li>
-              <li><Link href="/#dojos" className="hover:text-white transition-colors">Nos Dojos</Link></li>
+              <li><Link href="/#dojos" className="hover:text-white transition-colors">Notre Dojo</Link></li>
               <li><Link href="/#contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>

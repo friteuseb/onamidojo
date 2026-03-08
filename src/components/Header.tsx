@@ -24,7 +24,7 @@ export default function Header() {
             <Link href="/#disciplines" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Disciplines</Link>
             <Link href="/#instructeurs" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Instructeurs</Link>
             <Link href="/#horaires" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Horaires</Link>
-            <Link href="/#dojos" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Nos Dojos</Link>
+            <Link href="/#dojos" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Notre Dojo</Link>
             <Link href="/#contact" className="bg-indigo-950 text-white px-6 py-2.5 rounded-sm font-bold hover:bg-red-700 transition-all duration-300 shadow-md">
               Essai Gratuit
             </Link>
@@ -45,7 +45,7 @@ export default function Header() {
             <Link href="/#disciplines" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Disciplines</Link>
             <Link href="/#instructeurs" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Instructeurs</Link>
             <Link href="/#horaires" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Horaires</Link>
-            <Link href="/#dojos" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Nos Dojos</Link>
+            <Link href="/#dojos" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Notre Dojo</Link>
             <Link href="/#contact" className="block py-3 bg-indigo-950 text-white text-center font-bold rounded-sm" onClick={() => setMobileMenuOpen(false)}>
               Essai Gratuit
             </Link>

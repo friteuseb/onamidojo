@@ -44,44 +44,44 @@ const scheduleData = [
   {
     day: 'Lundi',
     courses: [
-      { time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: 'Dojo de la Providence', color: 'red' }
+      { time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }
     ]
   },
   {
     day: 'Mardi',
     courses: [
-      { time: '20h30 - 22h00', name: 'Kyokushin Adultes & Ados', location: 'Dojo Budosport80', color: 'slate' }
+      { time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }
     ]
   },
   {
     day: 'Mercredi',
     courses: [
-      { time: '16h00 - 17h30', name: 'Kempo Enfants -13ans', location: 'Dojo Budosport80', color: 'purple' },
-      { time: '17h45 - 19h15', name: 'Kempo Ados 13ans+', location: 'Dojo Budosport80', color: 'blue' }
+      { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' },
+      { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }
     ]
   },
   {
     day: 'Jeudi',
     courses: [
-      { time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: 'Dojo Budosport80', color: 'red' }
+      { time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }
     ]
   },
   {
     day: 'Vendredi',
     courses: [
-      { time: '20h30 - 22h00', name: 'Kyokushin Adultes & Ados', location: 'Dojo Budosport80', color: 'slate' }
+      { time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }
     ]
   },
   {
     day: 'Samedi',
     courses: [
-      { time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: 'Dojo Budosport80', color: 'orange' }
+      { time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' }
     ]
   },
   {
     day: 'Dimanche',
     courses: [
-      { time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: 'Dojo Budosport80', color: 'indigo' }
+      { time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' }
     ]
   }
 ];
@@ -284,7 +284,7 @@ export default function OnamiDojoHome() {
               { icon: <Users className="w-8 h-8" />, title: "Tous les Publics", desc: "Sections dédiées aux enfants dès 6 ans, adolescents et adultes de tous niveaux." },
               { icon: <Flame className="w-8 h-8" />, title: "2 Cours d'Essai Gratuits", desc: "Venez tester gratuitement nos deux disciplines sans aucun engagement." },
               { icon: <ShieldCheck className="w-8 h-8" />, title: "Équipement Disponible", desc: "Matériel de frappe et protections de qualité disponibles sur place et à la vente." },
-              { icon: <MapPin className="w-8 h-8" />, title: "2 Dojos à Amiens", desc: "Dojo de la Providence et Dojo Budosport80 pour faciliter votre pratique." },
+              { icon: <MapPin className="w-8 h-8" />, title: "Dojo en Centre-Ville", desc: "Notre dojo au 24 rue des Cordeliers à Amiens, facilement accessible pour tous." },
               { icon: <Users className="w-8 h-8" />, title: "Esprit de Famille", desc: "Une ambiance bienveillante où l'entraide et le respect sont les règles d'or." },
             ].map((feature, idx) => (
               <div key={idx} className="p-6 md:p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group">
@@ -440,47 +440,31 @@ export default function OnamiDojoHome() {
         </div>
       </section>
 
-      {/* Dojos Section */}
+      {/* Dojo Section */}
       <section id="dojos" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Nos Dojos"
-            subtitle="Lieux d'entraînement"
+            title="Notre Dojo"
+            subtitle="Lieu d'entraînement"
             japanese="道場"
           />
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mt-12">
+          <div className="max-w-2xl mx-auto md:mx-0 mt-12">
             <div className="bg-white border border-slate-200 p-6 md:p-8 hover:shadow-xl transition-all">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 md:w-14 md:h-14 bg-indigo-950 text-white flex items-center justify-center rounded-full flex-shrink-0">
                   <MapPin className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900">Dojo de la Providence</h3>
-                  <p className="text-red-700 font-medium">Cours du Lundi</p>
+                  <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900">Dojo Onami</h3>
+                  <p className="text-red-700 font-medium">Tous les cours</p>
                 </div>
               </div>
               <div className="space-y-2 text-slate-600 text-sm md:text-base">
-                <p><strong>Adresse :</strong> École de la Providence, 3ème étage</p>
-                <p><strong>Repère :</strong> Face à la piscine</p>
-                <p><strong>Ville :</strong> Amiens</p>
-              </div>
-            </div>
-
-            <div className="bg-white border border-slate-200 p-6 md:p-8 hover:shadow-xl transition-all">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-red-700 text-white flex items-center justify-center rounded-full flex-shrink-0">
-                  <MapPin className="w-6 h-6 md:w-7 md:h-7" />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900">Dojo Budosport80</h3>
-                  <p className="text-red-700 font-medium">Tous les autres cours</p>
-                </div>
-              </div>
-              <div className="space-y-2 text-slate-600 text-sm md:text-base">
-                <p><strong>Adresse :</strong> 12 rue Colbert</p>
+                <p><strong>Adresse :</strong> 24 rue des Cordeliers</p>
                 <p><strong>Code postal :</strong> 80000 Amiens</p>
                 <p><strong>Téléphone :</strong> <a href="tel:0766222745" className="text-red-700 hover:underline">07 66 22 27 45</a></p>
+                <p><strong>Email :</strong> <a href="mailto:contact@onamidojo.fr" className="text-red-700 hover:underline">contact@onamidojo.fr</a></p>
               </div>
             </div>
           </div>

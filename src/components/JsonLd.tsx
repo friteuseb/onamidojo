@@ -9,24 +9,13 @@ export default function JsonLd() {
     url: 'https://onamidojo.fr',
     telephone: '+33766222745',
     email: 'contact@onamidojo.fr',
-    address: [
-      {
-        '@type': 'PostalAddress',
-        streetAddress: '12 rue Colbert',
-        addressLocality: 'Amiens',
-        postalCode: '80000',
-        addressCountry: 'FR',
-        name: 'Dojo Budosport80',
-      },
-      {
-        '@type': 'PostalAddress',
-        streetAddress: 'École de la Providence',
-        addressLocality: 'Amiens',
-        postalCode: '80000',
-        addressCountry: 'FR',
-        name: 'Dojo de la Providence',
-      },
-    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '24 rue des Cordeliers',
+      addressLocality: 'Amiens',
+      postalCode: '80000',
+      addressCountry: 'FR',
+    },
     geo: {
       '@type': 'GeoCoordinates',
       latitude: 49.8941,
@@ -86,10 +75,10 @@ export default function JsonLd() {
       },
       {
         '@type': 'Question',
-        name: 'Où se trouvent les dojos d\'Onami Dojo à Amiens ?',
+        name: 'Où se trouve le dojo d\'Onami Dojo à Amiens ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Nous disposons de 2 dojos : le Dojo Budosport80 au 12 rue Colbert à Amiens (cours principaux) et le Dojo de la Providence (cours du lundi).',
+          text: 'Notre dojo se situe au 24 rue des Cordeliers à Amiens (80000). Tous les cours y sont dispensés.',
         },
       },
     ],
