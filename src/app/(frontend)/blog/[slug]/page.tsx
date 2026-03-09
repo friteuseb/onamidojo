@@ -6,6 +6,8 @@ import { getPosts, getPostBySlug } from '@/lib/payload-helpers';
 import RichText from '@/components/RichText';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+export const revalidate = 3600; // ISR : revalider toutes les heures
+
 export async function generateStaticParams() {
   try {
     const posts = await getPosts(200);
@@ -32,12 +34,12 @@ export async function generateMetadata({
     title: post.pageTitle || post.title,
     description: post.excerpt,
     alternates: {
-      canonical: `https://onamidojo.fr/blog/${post.slug}`,
+      canonical: `https://www.onamidojo.fr/blog/${post.slug}`,
     },
     openGraph: {
       title: post.pageTitle || post.title,
       description: post.excerpt || '',
-      url: `https://onamidojo.fr/blog/${post.slug}`,
+      url: `https://www.onamidojo.fr/blog/${post.slug}`,
       type: 'article',
       ...(imageUrl && {
         images: [
@@ -234,8 +236,8 @@ export default async function ArticlePage({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://onamidojo.fr' },
-              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://onamidojo.fr/blog' },
+              { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.onamidojo.fr' },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.onamidojo.fr/blog' },
               { '@type': 'ListItem', position: 3, name: post.title },
             ],
           }),
@@ -255,27 +257,27 @@ export default async function ArticlePage({
             datePublished: publishedDate,
             dateModified: publishedDate,
             ...(imageUrl && {
-              image: imageUrl.startsWith('/') ? `https://onamidojo.fr${imageUrl}` : imageUrl,
+              image: imageUrl.startsWith('/') ? `https://www.onamidojo.fr${imageUrl}` : imageUrl,
             }),
             author: {
               '@type': 'Organization',
               name: 'Onami Dojo',
-              url: 'https://onamidojo.fr',
+              url: 'https://www.onamidojo.fr',
             },
             publisher: {
               '@type': 'Organization',
               name: 'Onami Dojo',
-              url: 'https://onamidojo.fr',
+              url: 'https://www.onamidojo.fr',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://onamidojo.fr/images/og-image.jpg',
-                width: 1200,
-                height: 630,
+                url: 'https://www.onamidojo.fr/images/logo-onami-dojo.png',
+                width: 512,
+                height: 512,
               },
             },
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://onamidojo.fr/blog/${post.slug}`,
+              '@id': `https://www.onamidojo.fr/blog/${post.slug}`,
             },
           }),
         }}

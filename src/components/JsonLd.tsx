@@ -2,15 +2,15 @@ export default function JsonLd() {
   const organization = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://onamidojo.fr/#organization',
+    '@id': 'https://www.onamidojo.fr/#organization',
     name: 'Onami Dojo',
     alternateName: '大波道場',
-    url: 'https://onamidojo.fr',
+    url: 'https://www.onamidojo.fr',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://onamidojo.fr/images/og-image.jpg',
-      width: 1200,
-      height: 630,
+      url: 'https://www.onamidojo.fr/images/logo-onami-dojo.png',
+      width: 512,
+      height: 512,
     },
     email: 'contact@onamidojo.fr',
     telephone: '+33766222745',
@@ -31,12 +31,12 @@ export default function JsonLd() {
   const sportsLocation = {
     '@context': 'https://schema.org',
     '@type': 'SportsActivityLocation',
-    '@id': 'https://onamidojo.fr/#sportslocation',
+    '@id': 'https://www.onamidojo.fr/#sportslocation',
     name: 'Onami Dojo',
     alternateName: '大波道場',
     description: 'Club de karaté à Amiens proposant Kempo Karaté et Kyokushin. Cours pour enfants, adolescents et adultes.',
-    url: 'https://onamidojo.fr',
-    image: 'https://onamidojo.fr/images/og-image.jpg',
+    url: 'https://www.onamidojo.fr',
+    image: 'https://www.onamidojo.fr/images/og-image.jpg',
     telephone: '+33766222745',
     email: 'contact@onamidojo.fr',
     address: {
@@ -71,13 +71,13 @@ export default function JsonLd() {
   const webSite = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://onamidojo.fr/#website',
+    '@id': 'https://www.onamidojo.fr/#website',
     name: 'Onami Dojo',
     alternateName: '大波道場',
-    url: 'https://onamidojo.fr',
+    url: 'https://www.onamidojo.fr',
     inLanguage: 'fr',
     publisher: {
-      '@id': 'https://onamidojo.fr/#organization',
+      '@id': 'https://www.onamidojo.fr/#organization',
     },
   };
 

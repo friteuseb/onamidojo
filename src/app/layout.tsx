@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://onamidojo.fr"),
+  metadataBase: new URL("https://www.onamidojo.fr"),
   title: {
     default: "Onami Dojo | Karaté Kempo & Kyokushin à Amiens",
     template: "%s | Onami Dojo",

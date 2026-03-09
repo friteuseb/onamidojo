@@ -1,5 +1,13 @@
 {
   "framework": "nextjs",
   "buildCommand": "npm run build",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "onamidojo.fr" }],
+      "destination": "https://www.onamidojo.fr/:path",
+      "permanent": true
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getPosts } from '@/lib/payload-helpers';
 
-const SITE_URL = 'https://onamidojo.fr';
+const SITE_URL = 'https://www.onamidojo.fr';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [

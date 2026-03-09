@@ -4,18 +4,20 @@ import Link from 'next/link';
 import { getPosts, getCategories } from '@/lib/payload-helpers';
 import { ChevronRight } from 'lucide-react';
 
+export const revalidate = 3600; // ISR : revalider toutes les heures
+
 export const metadata: Metadata = {
   title: 'Blog | Conseils Karaté, Kempo & Kyokushin',
   description:
     'Articles et conseils sur le karaté Kempo et Kyokushin : techniques, entraînement, compétition, enfants et bien-être. Par les instructeurs de l\'Onami Dojo Amiens.',
   alternates: {
-    canonical: 'https://onamidojo.fr/blog',
+    canonical: 'https://www.onamidojo.fr/blog',
   },
   openGraph: {
     title: 'Blog | Onami Dojo - Karaté Kempo & Kyokushin',
     description:
       'Articles et conseils sur le karaté Kempo et Kyokushin : techniques, entraînement, compétition et bien-être.',
-    url: 'https://onamidojo.fr/blog',
+    url: 'https://www.onamidojo.fr/blog',
   },
 };
 

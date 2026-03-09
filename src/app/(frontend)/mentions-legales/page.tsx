@@ -2,7 +2,7 @@ export const metadata = {
   title: 'Mentions Légales | Onami Dojo Amiens',
   description: 'Mentions légales du site Onami Dojo, club de karaté Kempo et Kyokushin à Amiens.',
   alternates: {
-    canonical: 'https://onamidojo.fr/mentions-legales',
+    canonical: 'https://www.onamidojo.fr/mentions-legales',
   },
 };
 

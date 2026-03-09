@@ -1,0 +1,21 @@
+{
+  "name": "Onami Dojo - Karaté Kempo & Kyokushin à Amiens",
+  "short_name": "Onami Dojo",
+  "description": "Club de karaté à Amiens proposant Kempo Karaté et Kyokushin.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f6",
+  "theme_color": "#1e1b4b",
+  "icons": [
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

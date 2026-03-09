@@ -2,7 +2,7 @@ export const metadata = {
   title: 'Politique de Confidentialité | Onami Dojo Amiens',
   description: 'Politique de confidentialité et protection des données personnelles du site Onami Dojo.',
   alternates: {
-    canonical: 'https://onamidojo.fr/confidentialite',
+    canonical: 'https://www.onamidojo.fr/confidentialite',
   },
 };
 

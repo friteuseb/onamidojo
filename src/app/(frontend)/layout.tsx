@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Onami Dojo | Karaté Kempo & Kyokushin à Amiens",
     description:
       "Club de karaté à Amiens proposant Kempo Karaté et Kyokushin. Cours pour enfants, adolescents et adultes. 2 cours d'essai gratuits.",
-    url: "https://onamidojo.fr",
+    url: "https://www.onamidojo.fr",
     siteName: "Onami Dojo",
     locale: "fr_FR",
     type: "website",
@@ -61,6 +61,17 @@ export const metadata: Metadata = {
       "Club de karaté Kempo & Kyokushin à Amiens. 2 cours d'essai gratuits. Rejoignez-nous !",
     images: ["/images/og-image.jpg"],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16' },
+      { url: '/images/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/manifest.json',
   robots: {
     index: true,
     follow: true,
@@ -73,7 +84,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://onamidojo.fr",
+    canonical: "https://www.onamidojo.fr",
   },
 };
 
