@@ -94,7 +94,7 @@ const instructors = [
     role: "Directeur Technique - Kempo",
     rank: "Ceinture Noire",
     achievements: ["3ème au Championnat du Monde WKB", "5x Podium Européen", "Vice-Champion d'Europe 2023 & 2024"],
-    image: "/images/instructors/olivier.jpg",
+    image: "/images/instructors/olivier.png",
   },
   {
     name: "Senseï Xavier Gadoux",
