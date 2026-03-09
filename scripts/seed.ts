@@ -17,13 +17,13 @@ async function seed() {
       collection: 'users',
       data: {
         email: 'admin@onamidojo.fr',
-        password: 'On@mi2026!Dojo#Kx',
+        password: process.env.ADMIN_PASSWORD || 'changeme',
         firstName: 'Admin',
         lastName: 'Onami',
         role: 'admin',
       },
     })
-    console.log('  ✓ Admin créé (admin@onamidojo.fr / On@mi2026!Dojo#Kx)')
+    console.log('  ✓ Admin créé (admin@onamidojo.fr)')
   } catch {
     console.log('  → Admin existe déjà, ignoré')
   }

@@ -24,7 +24,7 @@ export async function POST() {
         collection: 'users',
         id: existingAdmin.docs[0].id,
         data: {
-          password: 'On@mi2026!Dojo#Kx',
+          password: process.env.ADMIN_PASSWORD || 'changeme',
           firstName: 'Admin',
           lastName: 'Onami',
           role: 'admin',
@@ -36,7 +36,7 @@ export async function POST() {
         collection: 'users',
         data: {
           email: 'admin@onamidojo.fr',
-          password: 'On@mi2026!Dojo#Kx',
+          password: process.env.ADMIN_PASSWORD || 'changeme',
           firstName: 'Admin',
           lastName: 'Onami',
           role: 'admin',
