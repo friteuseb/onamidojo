@@ -13,7 +13,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 bg-indigo-950 rounded-full flex items-center justify-center">
-              <span className="text-white font-serif font-bold text-xl">大</span>
+              <span className="text-white font-serif font-bold text-sm leading-none">大<br/>波</span>
             </div>
             <div>
               <span className="block text-xl font-serif font-black tracking-tight text-indigo-950 leading-none">ONAMI DOJO</span>
