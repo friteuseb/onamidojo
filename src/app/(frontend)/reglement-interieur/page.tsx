@@ -97,7 +97,7 @@ export default function ReglementInterieur() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-indigo-950 mb-4">Article 6 - Assurance et responsabilité</h2>
             <p className="text-slate-600 leading-relaxed">
-              Chaque adhérent est couvert par l&apos;assurance de la Fédération Française de Karaté
+              Chaque adhérent est couvert par l&apos;assurance de sa fédération
               via sa licence. L&apos;association décline toute responsabilité :
             </p>
             <ul className="text-slate-600 mt-4 space-y-2 list-disc list-inside">

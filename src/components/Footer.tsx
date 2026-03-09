@@ -53,7 +53,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Onami Dojo Amiens. Tous droits réservés.
           </p>
           <p className="text-indigo-400 text-xs">
-            Club affilié à la Fédération Française de Karaté (FFK)
+            Kyokushin affilié au <a href="https://karatekyokushin.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline">World Kyokushin Budokai France</a>
           </p>
         </div>
       </div>

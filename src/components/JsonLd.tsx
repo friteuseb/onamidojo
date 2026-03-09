@@ -23,8 +23,9 @@ export default function JsonLd() {
     },
     memberOf: {
       '@type': 'SportsOrganization',
-      name: 'Fédération Française de Karaté',
-      alternateName: 'FFK',
+      name: 'World Kyokushin Budokai France',
+      alternateName: 'WKB France',
+      url: 'https://karatekyokushin.fr/',
     },
   };
 

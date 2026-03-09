@@ -53,8 +53,11 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-indigo-950 mb-4">4. Affiliation fédérale</h2>
             <p className="text-slate-600 leading-relaxed">
-              L&apos;Onami Dojo est affilié à la <strong>Fédération Française de Karaté et Disciplines Associées (FFK)</strong>.
-              Les instructeurs sont diplômés d&apos;État et/ou titulaires de grades reconnus par la fédération.
+              Pour le Kyokushin, l&apos;Onami Dojo est affilié au{' '}
+              <a href="https://karatekyokushin.fr/" target="_blank" rel="noopener noreferrer" className="text-red-700 hover:underline">
+                <strong>World Kyokushin Budokai France (WKB France)</strong>
+              </a>.
+              Les instructeurs sont diplômés d&apos;État et/ou titulaires de grades reconnus.
             </p>
           </section>
 

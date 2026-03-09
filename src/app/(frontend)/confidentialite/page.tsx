@@ -98,7 +98,7 @@ export default function Confidentialite() {
             </p>
             <ul className="text-slate-600 mt-4 space-y-2 list-disc list-inside">
               <li>Les membres du bureau de l&apos;association</li>
-              <li>La Fédération Française de Karaté (pour les licences)</li>
+              <li>La fédération concernée (WKB France pour le Kyokushin) pour les licences</li>
               <li>Notre hébergeur (Vercel) pour le fonctionnement technique du site</li>
             </ul>
             <p className="text-slate-600 mt-4">
