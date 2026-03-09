@@ -72,29 +72,10 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
-      name: 'htmlContent',
-      type: 'code',
-      label: 'Contenu HTML (import legacy)',
-      admin: {
-        language: 'html',
-        description: 'Contenu HTML importé. Sera remplacé progressivement par le contenu Lexical.',
-        condition: (data) => Boolean(data?.htmlContent),
-      },
-    },
-    {
       name: 'featuredImage',
       type: 'upload',
       label: 'Image à la une',
       relationTo: 'media',
-    },
-    {
-      name: 'featuredImagePath',
-      type: 'text',
-      label: 'Chemin image (legacy)',
-      admin: {
-        description: 'Chemin vers l\'image statique (pour les articles importés)',
-        condition: (data) => Boolean(data?.featuredImagePath),
-      },
     },
     {
       name: 'category',

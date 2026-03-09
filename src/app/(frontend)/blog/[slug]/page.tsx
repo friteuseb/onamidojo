@@ -85,7 +85,6 @@ export default async function ArticlePage({
   const imagePath = (post.featuredImagePath as string) || null;
   const featuredImage = post.featuredImage as { url?: string; alt?: string } | null;
   const imageUrl = featuredImage?.url || imagePath;
-  const htmlContent = post.htmlContent as string | null;
 
   // Get related articles (same category)
   const allPosts = await getPosts(200);
@@ -148,16 +147,9 @@ export default async function ArticlePage({
         )}
 
         {/* Article Content */}
-        {htmlContent ? (
-          <div
-            className="article-content"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
-        ) : (
-          <div className="article-content">
-            <RichText data={post.content} />
-          </div>
-        )}
+        <div className="article-content">
+          <RichText data={post.content} />
+        </div>
 
         {/* CTA */}
         <div className="mt-16 p-8 bg-indigo-950 text-white rounded-sm">
