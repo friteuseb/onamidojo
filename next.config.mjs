@@ -4,6 +4,12 @@ import { withPayload } from '@payloadcms/next/withPayload'
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+    ],
   },
   async headers() {
     return [
@@ -21,7 +27,7 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: https://www.google-analytics.com",
+              "img-src 'self' data: https://www.google-analytics.com https://*.public.blob.vercel-storage.com",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
               "frame-ancestors 'none'",
