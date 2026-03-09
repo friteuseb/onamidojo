@@ -67,7 +67,7 @@ export default async function ArticlePage({
     <div className="min-h-screen bg-[#faf9f6] pt-28 pb-20">
       {/* Breadcrumb */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <nav className="flex items-center gap-2 text-sm text-slate-500">
+        <nav aria-label="Fil d'Ariane" className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="hover:text-indigo-900 transition-colors">
             Accueil
           </Link>
@@ -193,6 +193,21 @@ export default async function ArticlePage({
         </section>
       )}
 
+      {/* JSON-LD BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://onamidojo.fr' },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://onamidojo.fr/blog' },
+              { '@type': 'ListItem', position: 3, name: article.title },
+            ],
+          }),
+        }}
+      />
       {/* JSON-LD Article Schema */}
       <script
         type="application/ld+json"
@@ -202,6 +217,10 @@ export default async function ArticlePage({
             '@type': 'Article',
             headline: article.title,
             description: article.description,
+            inLanguage: 'fr',
+            articleSection: article.categoryLabel,
+            datePublished: '2026-03-08',
+            dateModified: '2026-03-09',
             ...(article.image && {
               image: `https://onamidojo.fr${article.image}`,
             }),
@@ -214,6 +233,12 @@ export default async function ArticlePage({
               '@type': 'Organization',
               name: 'Onami Dojo',
               url: 'https://onamidojo.fr',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://onamidojo.fr/images/og-image.jpg',
+                width: 1200,
+                height: 630,
+              },
             },
             mainEntityOfPage: {
               '@type': 'WebPage',

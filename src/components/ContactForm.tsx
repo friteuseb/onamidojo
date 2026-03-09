@@ -46,7 +46,7 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-12" role="status" aria-live="polite">
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -68,25 +68,26 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1">
-          <label htmlFor="firstName" className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Prénom</label>
+          <label htmlFor="firstName" className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Prénom</label>
           <input id="firstName" name="firstName" type="text" required className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="Votre prénom" />
         </div>
         <div className="space-y-1">
-          <label htmlFor="lastName" className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Nom</label>
+          <label htmlFor="lastName" className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Nom</label>
           <input id="lastName" name="lastName" type="text" required className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="Votre nom" />
         </div>
       </div>
       <div className="space-y-1">
-        <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Email</label>
+        <label htmlFor="email" className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Email</label>
         <input id="email" name="email" type="email" required className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="votre@email.com" />
       </div>
       <div className="space-y-1">
-        <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Téléphone</label>
+        <label htmlFor="phone" className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Téléphone</label>
         <input id="phone" name="phone" type="tel" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none" placeholder="06 XX XX XX XX" />
       </div>
       <div className="space-y-1">
-        <label htmlFor="discipline" className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Discipline souhaitée</label>
+        <label htmlFor="discipline" className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Discipline souhaitée</label>
         <select id="discipline" name="discipline" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none appearance-none cursor-pointer">
+          <option value="" disabled>Choisir une discipline</option>
           <option>Kempo Karaté</option>
           <option>Kyokushin Karaté</option>
           <option>Cours Enfants (6-13 ans)</option>
@@ -94,15 +95,17 @@ export default function ContactForm() {
         </select>
       </div>
       <div className="space-y-1">
-        <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Message (optionnel)</label>
+        <label htmlFor="message" className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Message (optionnel)</label>
         <textarea id="message" name="message" className="w-full bg-slate-50 border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-red-700 focus:border-transparent transition-all outline-none h-24 resize-none" placeholder="Précisez votre niveau, vos disponibilités..."></textarea>
       </div>
 
-      {status === 'error' && (
-        <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-sm">
-          {errorMessage}
-        </div>
-      )}
+      <div aria-live="assertive">
+        {status === 'error' && (
+          <div role="alert" className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-sm">
+            {errorMessage}
+          </div>
+        )}
+      </div>
 
       <button
         type="submit"

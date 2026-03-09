@@ -9,6 +9,15 @@ interface ContactData {
   message: string;
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export async function POST(request: NextRequest) {
   try {
     const data: ContactData = await request.json();
@@ -45,7 +54,7 @@ export async function POST(request: NextRequest) {
           sender: { name: 'Onami Dojo - Site Web', email: 'noreply@onamidojo.fr' },
           to: [{ email: recipientEmail, name: 'Onami Dojo' }],
           replyTo: { email: data.email, name: `${data.firstName} ${data.lastName}` },
-          subject: `Demande d'essai - ${data.firstName} ${data.lastName} (${data.discipline})`,
+          subject: `Demande d'essai - ${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)} (${escapeHtml(data.discipline)})`,
           htmlContent: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <div style="background: #1e1b4b; color: white; padding: 20px; text-align: center;">
@@ -54,16 +63,16 @@ export async function POST(request: NextRequest) {
               </div>
               <div style="padding: 30px; background: #faf9f6;">
                 <table style="width: 100%; border-collapse: collapse;">
-                  <tr><td style="padding: 8px 0; color: #64748b; width: 130px;">Prénom</td><td style="padding: 8px 0; font-weight: bold;">${data.firstName}</td></tr>
-                  <tr><td style="padding: 8px 0; color: #64748b;">Nom</td><td style="padding: 8px 0; font-weight: bold;">${data.lastName}</td></tr>
-                  <tr><td style="padding: 8px 0; color: #64748b;">Email</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-                  <tr><td style="padding: 8px 0; color: #64748b;">Téléphone</td><td style="padding: 8px 0;">${data.phone || 'Non renseigné'}</td></tr>
-                  <tr><td style="padding: 8px 0; color: #64748b;">Discipline</td><td style="padding: 8px 0; font-weight: bold; color: #dc2626;">${data.discipline}</td></tr>
+                  <tr><td style="padding: 8px 0; color: #64748b; width: 130px;">Prénom</td><td style="padding: 8px 0; font-weight: bold;">${escapeHtml(data.firstName)}</td></tr>
+                  <tr><td style="padding: 8px 0; color: #64748b;">Nom</td><td style="padding: 8px 0; font-weight: bold;">${escapeHtml(data.lastName)}</td></tr>
+                  <tr><td style="padding: 8px 0; color: #64748b;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></td></tr>
+                  <tr><td style="padding: 8px 0; color: #64748b;">Téléphone</td><td style="padding: 8px 0;">${escapeHtml(data.phone || 'Non renseigné')}</td></tr>
+                  <tr><td style="padding: 8px 0; color: #64748b;">Discipline</td><td style="padding: 8px 0; font-weight: bold; color: #dc2626;">${escapeHtml(data.discipline)}</td></tr>
                 </table>
                 ${data.message ? `
                   <div style="margin-top: 20px; padding: 15px; background: white; border-left: 4px solid #1e1b4b;">
                     <p style="margin: 0 0 5px; color: #64748b; font-size: 12px; text-transform: uppercase;">Message</p>
-                    <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
+                    <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(data.message)}</p>
                   </div>
                 ` : ''}
               </div>

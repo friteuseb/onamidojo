@@ -3,7 +3,7 @@ import { Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-indigo-950 text-white pt-16 md:pt-20 pb-10">
+    <footer aria-label="Pied de page" className="bg-indigo-950 text-white pt-16 md:pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
           <div className="sm:col-span-2">
@@ -17,11 +17,11 @@ export default function Footer() {
               Le dojo de la &quot;Grande Vague&quot; (Onami - 大波) symbolise la force irrésistible et le rythme éternel de la mer, des valeurs fondamentales de notre pratique martiale à Amiens.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 transition-colors">
-                <Instagram className="w-5 h-5" />
+              <a href="#" aria-label="Instagram" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 transition-colors">
+                <Instagram className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a href="#" aria-label="Facebook" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 transition-colors">
+                <Facebook className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>

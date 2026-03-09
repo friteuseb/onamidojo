@@ -27,7 +27,7 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[60] p-4 animate-in">
+    <div className="fixed bottom-0 left-0 right-0 z-[60] p-4 animate-in" role="dialog" aria-label="Consentement cookies">
       <div className="max-w-4xl mx-auto bg-white border border-slate-200 shadow-2xl rounded-sm p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4">
         <div className="flex-1">
           <p className="text-sm text-slate-700 font-medium mb-1">Ce site utilise des cookies</p>

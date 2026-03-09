@@ -18,7 +18,7 @@ import { articles } from '@/data/articles';
 // --- Custom Components ---
 
 const SeigaihaPattern = () => (
-  <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cpath d='M0 40c0-11.046 8.954-20 20-20s20 8.954 20 20M0 30c0-5.523 4.477-10 10-10s10 4.477 10 10m20 10c0-11.046 8.954-20 20-20s20 8.954 20 20m-20-10c0-5.523 4.477-10 10-10s10 4.477 10 10' fill='none' stroke='%231e3a8a' stroke-width='1.5'/%3E%3C/svg%3E")` }} />
+  <div className="absolute inset-0 opacity-5 pointer-events-none" aria-hidden="true" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cpath d='M0 40c0-11.046 8.954-20 20-20s20 8.954 20 20M0 30c0-5.523 4.477-10 10-10s10 4.477 10 10m20 10c0-11.046 8.954-20 20-20s20 8.954 20 20m-20-10c0-5.523 4.477-10 10-10s10 4.477 10 10' fill='none' stroke='%231e3a8a' stroke-width='1.5'/%3E%3C/svg%3E")` }} />
 );
 
 const HankoSeal = ({ text }: { text: string }) => (
@@ -104,14 +104,14 @@ const instructors = [
     image: "/images/instructors/xavier.jpg",
   },
   {
-    name: "Marc Yeu",
+    name: "Senseï Marc Yeu",
     role: "Instructeur Kempo",
     rank: "2ème Dan",
     achievements: ["Instructeur certifié", "Spécialiste Kumite"],
     image: "/images/instructors/marc.jpg",
   },
   {
-    name: "Anibal Barreira",
+    name: "Senseï Anibal Barreira",
     role: "Instructeur Kempo",
     rank: "1er Dan",
     achievements: ["Instructeur certifié", "Formation continue"],
@@ -133,10 +133,11 @@ export default function OnamiDojoHome() {
             alt="La Grande Vague de Kanagawa"
             fill
             className="object-cover opacity-30 mix-blend-overlay"
+            sizes="100vw"
             priority
           />
           {/* Wave SVG Overlay */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-48 fill-[#faf9f6]">
               <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
@@ -163,7 +164,7 @@ export default function OnamiDojoHome() {
               <p className="text-lg md:text-2xl text-indigo-100 font-light italic font-serif">
                 L&apos;Art du Karaté Traditionnel à Amiens
               </p>
-              <span className="text-3xl md:text-4xl text-white/20 font-serif hidden sm:block">大波道場</span>
+              <span className="text-3xl md:text-4xl text-white/20 font-serif hidden sm:block" aria-hidden="true">大波道場</span>
             </div>
 
             <p className="text-indigo-200 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
@@ -183,7 +184,7 @@ export default function OnamiDojoHome() {
         </div>
 
         {/* Vertical Text */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block">
+        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block" aria-hidden="true">
           <p className="[writing-mode:vertical-rl] text-white/10 font-serif text-8xl font-black select-none tracking-tighter">
             SPIRIT & DISCIPLINE
           </p>
@@ -209,6 +210,7 @@ export default function OnamiDojoHome() {
                   alt="Entraînement Kempo Karaté"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/90 via-indigo-950/30 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 z-10">
@@ -242,6 +244,7 @@ export default function OnamiDojoHome() {
                   alt="Entraînement Kyokushin Karaté"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/90 via-indigo-950/30 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 z-10">
@@ -290,7 +293,7 @@ export default function OnamiDojoHome() {
             ].map((feature, idx) => (
               <div key={idx} className="p-6 md:p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group">
                 <div className="text-red-500 mb-6 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                <h4 className="text-lg md:text-xl font-serif font-bold mb-3">{feature.title}</h4>
+                <h3 className="text-lg md:text-xl font-serif font-bold mb-3">{feature.title}</h3>
                 <p className="text-indigo-200 leading-relaxed text-sm">{feature.desc}</p>
               </div>
             ))}
@@ -316,12 +319,13 @@ export default function OnamiDojoHome() {
                     alt={inst.name}
                     fill
                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    sizes="128px"
                   />
                   <div className="absolute -bottom-1 -right-1 z-10">
                     <HankoSeal text="大波" />
                   </div>
                 </div>
-                <h4 className="text-lg md:text-xl font-serif font-bold text-slate-900">{inst.name}</h4>
+                <h3 className="text-lg md:text-xl font-serif font-bold text-slate-900">{inst.name}</h3>
                 <p className="text-red-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1 mb-1">{inst.role}</p>
                 <p className="text-indigo-900 text-sm font-medium mb-3">{inst.rank}</p>
                 <div className="h-[1px] w-12 bg-slate-200 mb-3"></div>
@@ -426,6 +430,7 @@ export default function OnamiDojoHome() {
                 href={doc.file}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${doc.title} (PDF, ouvre dans un nouvel onglet)`}
                 className="flex items-center gap-4 p-4 bg-white border border-slate-200 hover:border-red-700 hover:shadow-lg transition-all group"
               >
                 <div className="w-12 h-12 bg-red-50 text-red-700 flex items-center justify-center rounded-sm group-hover:bg-red-700 group-hover:text-white transition-colors flex-shrink-0">
@@ -552,10 +557,10 @@ export default function OnamiDojoHome() {
               </p>
 
               <div className="p-6 bg-indigo-50 border border-indigo-100 mb-8">
-                <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                <h3 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
                   <Flame className="w-5 h-5 text-red-600" />
                   2 cours d&apos;essai gratuits !
-                </h4>
+                </h3>
                 <p className="text-indigo-700 text-sm">
                   Venez découvrir nos disciplines sans engagement. Prévoyez une tenue de sport et de l&apos;eau.
                 </p>
@@ -567,7 +572,7 @@ export default function OnamiDojoHome() {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h5 className="font-bold text-slate-900">Téléphone</h5>
+                    <h3 className="font-bold text-slate-900">Téléphone</h3>
                     <p className="text-slate-600"><a href="tel:0766222745" className="hover:text-red-700">07 66 22 27 45</a></p>
                   </div>
                 </div>
@@ -576,7 +581,7 @@ export default function OnamiDojoHome() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h5 className="font-bold text-slate-900">Email</h5>
+                    <h3 className="font-bold text-slate-900">Email</h3>
                     <p className="text-slate-600"><a href="mailto:contact@onamidojo.fr" className="hover:text-red-700">contact@onamidojo.fr</a></p>
                   </div>
                 </div>
