@@ -120,5 +120,139 @@ export async function POST() {
 
   results.push(`Articles: ${created} créés, ${skipped} ignorés (existants)`)
 
+  // 4. Importer les instructeurs
+  const instructors = [
+    {
+      name: 'Senseï Olivier Leclerc',
+      role: 'Directeur Technique - Kempo',
+      discipline: 'kempo',
+      rank: 'Ceinture Noire',
+      achievements: [
+        { label: '3ème au Championnat du Monde WKB' },
+        { label: '5x Podium Européen' },
+        { label: 'Vice-Champion d\'Europe 2023 & 2024' },
+      ],
+      photoPath: '/images/instructors/olivier.png',
+      order: 1,
+    },
+    {
+      name: 'Senseï Xavier Gadoux',
+      role: 'Responsable Kyokushin',
+      discipline: 'kyokushin',
+      rank: '3ème Dan',
+      achievements: [
+        { label: 'Champion de France' },
+        { label: 'WKB Branch Chief' },
+        { label: 'World Kyokushin Budokai France' },
+      ],
+      photoPath: '/images/instructors/xavier.jpg',
+      order: 2,
+    },
+    {
+      name: 'Senseï Marc Yeu',
+      role: 'Instructeur Kempo',
+      discipline: 'kempo',
+      rank: '2ème Dan',
+      achievements: [
+        { label: 'Instructeur certifié' },
+        { label: 'Spécialiste Kumite' },
+      ],
+      photoPath: '/images/instructors/marc.jpg',
+      order: 3,
+    },
+    {
+      name: 'Senseï Anibal Barreira',
+      role: 'Instructeur Kempo',
+      discipline: 'kempo',
+      rank: '1er Dan',
+      achievements: [
+        { label: 'Instructeur certifié' },
+        { label: 'Formation continue' },
+      ],
+      photoPath: '/images/instructors/anibal.jpg',
+      order: 4,
+    },
+  ]
+
+  let membersCreated = 0
+  for (const inst of instructors) {
+    const existing = await payload.find({
+      collection: 'team-members',
+      where: { name: { equals: inst.name } },
+      limit: 1,
+    })
+    if (existing.docs.length > 0) continue
+
+    try {
+      await payload.create({ collection: 'team-members', data: inst })
+      membersCreated++
+    } catch (e) {
+      results.push(`Erreur instructeur "${inst.name}": ${(e as Error).message}`)
+    }
+  }
+  results.push(`Instructeurs: ${membersCreated} créés`)
+
+  // 5. Initialiser la global Homepage
+  try {
+    await payload.updateGlobal({
+      slug: 'homepage',
+      data: {
+        hero: {
+          badge: 'Inscriptions ouvertes 2025-2026',
+          subtitle: 'L\'Art du Karaté Traditionnel à Amiens',
+          baseline: 'Découvrez la puissance du Kyokushin et la polyvalence du Kempo dans un environnement dédié à l\'excellence, au respect et au dépassement de soi.',
+          ctaPrimary: 'Découvrir nos cours',
+          ctaSecondary: 'Essai gratuit',
+        },
+        disciplines: {
+          kempo: {
+            tagline: 'Combat Libre Japonais',
+            description: 'Une approche moderne et complète intégrant frappes, projections et travail au sol. Le Kempo à l\'Onami Dojo privilégie l\'efficacité en combat réel tout en conservant l\'esprit martial japonais.',
+            features: [
+              { label: 'Système polyvalent pieds-poings' },
+              { label: 'Self-défense réaliste' },
+              { label: 'Combat libre (Kumite)' },
+              { label: 'Technique et polyvalence' },
+            ],
+            audience: 'Enfants, Ados, Adultes',
+          },
+          kyokushin: {
+            tagline: 'Full Contact Traditionnel',
+            description: 'L\'école de l\'ultime vérité. Un style à frappes réelles, réputé pour sa rigueur physique. Forgez un corps de fer et un mental d\'acier à travers la tradition de Sosai Mas Oyama.',
+            features: [
+              { label: 'Conditionnement physique intensif' },
+              { label: 'Technique traditionnelle (Kihon)' },
+              { label: 'Katas et Bunkai' },
+              { label: 'Kumite plein contact' },
+            ],
+            audience: 'Ados & Adultes',
+          },
+        },
+        whyChooseUs: {
+          title: 'Pourquoi choisir Onami Dojo ?',
+          subtitle: 'Plus qu\'un simple club de sport, un centre de formation humaine et martiale au cœur d\'Amiens.',
+          features: [
+            { icon: 'award', title: 'Champions Internationaux', description: 'Encadrement par des experts titrés : podiums européens et championnats nationaux.' },
+            { icon: 'users', title: 'Tous les Publics', description: 'Sections dédiées aux enfants dès 6 ans, adolescents et adultes de tous niveaux.' },
+            { icon: 'flame', title: '2 Cours d\'Essai Gratuits', description: 'Venez tester gratuitement nos deux disciplines sans aucun engagement.' },
+            { icon: 'shield', title: 'Équipement Disponible', description: 'Matériel de frappe et protections de qualité disponibles sur place et à la vente.' },
+            { icon: 'mappin', title: 'Dojo en Centre-Ville', description: 'Notre dojo au 24 rue des Cordeliers à Amiens, facilement accessible pour tous.' },
+            { icon: 'users', title: 'Esprit de Famille', description: 'Une ambiance bienveillante où l\'entraide et le respect sont les règles d\'or.' },
+          ],
+        },
+        contact: {
+          headline: 'Commencez votre parcours martial dès aujourd\'hui.',
+          description: 'Le karaté est une quête de vie. Que vous cherchiez la forme physique, la self-défense ou une discipline mentale, l\'Onami Dojo vous accompagne à chaque étape.',
+          trialText: '2 cours d\'essai gratuits !',
+          trialDescription: 'Venez découvrir nos disciplines sans engagement. Prévoyez une tenue de sport et de l\'eau.',
+        },
+        scheduleNote: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau. Reprise des cours : 16 septembre 2025.',
+      },
+    })
+    results.push('Homepage global initialisée')
+  } catch (e) {
+    results.push(`Erreur homepage: ${(e as Error).message}`)
+  }
+
   return NextResponse.json({ success: true, results })
 }

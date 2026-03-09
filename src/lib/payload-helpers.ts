@@ -38,6 +38,22 @@ export const getCategories = cache(async () => {
   return docs
 })
 
+export const getTeamMembers = cache(async () => {
+  const payload = await getPayload({ config })
+  const { docs } = await payload.find({
+    collection: 'team-members',
+    sort: 'order',
+    limit: 20,
+    depth: 1,
+  })
+  return docs
+})
+
+export const getHomepage = cache(async () => {
+  const payload = await getPayload({ config })
+  return payload.findGlobal({ slug: 'homepage' })
+})
+
 export const getPostsByCategory = cache(async (categoryId: string, limit = 100) => {
   const payload = await getPayload({ config })
   const { docs } = await payload.find({

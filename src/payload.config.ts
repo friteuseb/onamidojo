@@ -10,6 +10,8 @@ import { Users } from '@/collections/Users'
 import { Posts } from '@/collections/Posts'
 import { Categories } from '@/collections/Categories'
 import { Media } from '@/collections/Media'
+import { TeamMembers } from '@/collections/TeamMembers'
+import { Homepage } from '@/globals/Homepage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +23,8 @@ export default buildConfig({
       titleSuffix: ' — Onami Dojo',
     },
   },
-  collections: [Users, Posts, Categories, Media],
+  collections: [Users, Posts, Categories, Media, TeamMembers],
+  globals: [Homepage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'onami-dojo-dev-secret-change-in-production',
   typescript: {
