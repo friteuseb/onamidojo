@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { articles, categories } from '@/data/articles';
+import { getPosts, getCategories } from '@/lib/payload-helpers';
 import { ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -19,25 +19,43 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage({
+const CATEGORY_COLORS: Record<string, string> = {
+  'bg-slate-800': 'bg-slate-800 text-white',
+  'bg-red-700': 'bg-red-700 text-white',
+  'bg-purple-700': 'bg-purple-700 text-white',
+  'bg-orange-600': 'bg-orange-600 text-white',
+  'bg-indigo-900': 'bg-indigo-900 text-white',
+};
+
+function getCategoryBadgeClass(color?: string | null): string {
+  if (color && CATEGORY_COLORS[color]) return CATEGORY_COLORS[color];
+  return 'bg-indigo-900 text-white';
+}
+
+export default async function BlogPage({
   searchParams,
 }: {
   searchParams: Promise<{ categorie?: string }>;
 }) {
-  return <BlogContent searchParamsPromise={searchParams} />;
-}
+  const params = await searchParams;
+  const activeCategory = params.categorie || 'all';
 
-async function BlogContent({
-  searchParamsPromise,
-}: {
-  searchParamsPromise: Promise<{ categorie?: string }>;
-}) {
-  const searchParams = await searchParamsPromise;
-  const activeCategory = searchParams.categorie || 'all';
-  const filtered =
-    activeCategory === 'all'
-      ? articles
-      : articles.filter((a) => a.category === activeCategory);
+  const [posts, categories] = await Promise.all([
+    getPosts(100),
+    getCategories(),
+  ]);
+
+  const filtered = activeCategory === 'all'
+    ? posts
+    : posts.filter((post) => {
+        const cat = post.category as { slug?: string } | null;
+        return cat?.slug === activeCategory;
+      });
+
+  const allCategories = [
+    { slug: 'all', name: 'Tous les articles' },
+    ...categories.map((c) => ({ slug: c.slug || '', name: c.name })),
+  ];
 
   return (
     <div className="min-h-screen bg-[#faf9f6] pt-28 pb-20">
@@ -59,80 +77,79 @@ async function BlogContent({
 
         {/* Category Filter */}
         <div className="flex flex-wrap gap-2 mb-12">
-          {categories.map((cat) => (
+          {allCategories.map((cat) => (
             <Link
-              key={cat.id}
-              href={cat.id === 'all' ? '/blog' : `/blog?categorie=${cat.id}`}
+              key={cat.slug}
+              href={cat.slug === 'all' ? '/blog' : `/blog?categorie=${cat.slug}`}
               className={`px-4 py-2 text-sm font-medium rounded-sm transition-colors ${
-                activeCategory === cat.id
+                activeCategory === cat.slug
                   ? 'bg-indigo-950 text-white'
                   : 'bg-white border border-slate-200 text-slate-600 hover:border-indigo-950 hover:text-indigo-950'
               }`}
             >
-              {cat.label}
+              {cat.name}
             </Link>
           ))}
         </div>
 
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {filtered.map((article) => (
-            <Link
-              key={article.slug}
-              href={`/blog/${article.slug}`}
-              className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
-            >
-              {/* Image */}
-              <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
-                {article.image ? (
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 to-indigo-800 flex items-center justify-center">
-                    <span className="text-white/20 font-serif text-6xl font-black select-none">
-                      大波
-                    </span>
-                  </div>
-                )}
-                <div className="absolute top-3 left-3">
-                  <span
-                    className={`text-[10px] px-3 py-1 font-bold uppercase tracking-widest rounded-full ${
-                      article.category === 'kyokushin'
-                        ? 'bg-slate-800 text-white'
-                        : article.category === 'kempo'
-                          ? 'bg-red-700 text-white'
-                          : article.category === 'enfants'
-                            ? 'bg-purple-700 text-white'
-                            : article.category === 'competition'
-                              ? 'bg-orange-600 text-white'
-                              : 'bg-indigo-900 text-white'
-                    }`}
-                  >
-                    {article.categoryLabel}
+          {filtered.map((post) => {
+            const category = post.category as { slug?: string; name?: string; color?: string } | null;
+            const imagePath = post.featuredImagePath as string | null;
+            const featuredImage = post.featuredImage as { url?: string; alt?: string } | null;
+            const imageUrl = featuredImage?.url || imagePath;
+
+            return (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                {/* Image */}
+                <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
+                  {imageUrl ? (
+                    <Image
+                      src={imageUrl}
+                      alt={featuredImage?.alt || post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 to-indigo-800 flex items-center justify-center">
+                      <span className="text-white/20 font-serif text-6xl font-black select-none">
+                        大波
+                      </span>
+                    </div>
+                  )}
+                  {category && (
+                    <div className="absolute top-3 left-3">
+                      <span
+                        className={`text-[10px] px-3 py-1 font-bold uppercase tracking-widest rounded-full ${getCategoryBadgeClass(category.color)}`}
+                      >
+                        {category.name}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-5 md:p-6">
+                  <h2 className="text-lg font-serif font-bold text-slate-900 mb-2 group-hover:text-red-700 transition-colors line-clamp-2">
+                    {post.title}
+                  </h2>
+                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <span className="text-red-700 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Lire l&apos;article
+                    <ChevronRight className="w-4 h-4" />
                   </span>
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5 md:p-6">
-                <h2 className="text-lg font-serif font-bold text-slate-900 mb-2 group-hover:text-red-700 transition-colors line-clamp-2">
-                  {article.title}
-                </h2>
-                <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-4">
-                  {article.description}
-                </p>
-                <span className="text-red-700 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Lire l&apos;article
-                  <ChevronRight className="w-4 h-4" />
-                </span>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
 
         {filtered.length === 0 && (

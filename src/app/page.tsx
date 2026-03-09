@@ -168,7 +168,7 @@ export default function OnamiDojoHome() {
             </div>
 
             <p className="text-indigo-200 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-              Découvrez la puissance du <strong className="text-white">Kyokushin</strong> et la fluidité du <strong className="text-white">Kempo</strong> dans un environnement dédié à l&apos;excellence, au respect et au dépassement de soi.
+              Découvrez la puissance du <strong className="text-white">Kyokushin</strong> et la polyvalence du <strong className="text-white">Kempo</strong> dans un environnement dédié à l&apos;excellence, au respect et au dépassement de soi.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -223,7 +223,7 @@ export default function OnamiDojoHome() {
                   Une approche moderne et complète intégrant frappes, projections et travail au sol. Le Kempo à l&apos;Onami Dojo privilégie l&apos;efficacité en combat réel tout en conservant l&apos;esprit martial japonais.
                 </p>
                 <ul className="space-y-3 mb-6">
-                  {['Système polyvalent pieds-poings', 'Self-défense réaliste', 'Combat libre (Kumite)', 'Technique et fluidité'].map((item) => (
+                  {['Système polyvalent pieds-poings', 'Self-défense réaliste', 'Combat libre (Kumite)', 'Technique et polyvalence'].map((item) => (
                     <li key={item} className="flex items-center gap-2 text-slate-700 font-medium text-sm">
                       <div className="w-1.5 h-1.5 bg-red-700 rounded-full flex-shrink-0"></div>
                       {item}

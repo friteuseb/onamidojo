@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { articles, getArticleBySlug } from '@/data/articles';
+import { getPosts, getPostBySlug } from '@/lib/payload-helpers';
+import RichText from '@/components/RichText';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export function generateStaticParams() {
-  return articles.map((article) => ({ slug: article.slug }));
+export async function generateStaticParams() {
+  const posts = await getPosts(200);
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -15,38 +17,55 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
-  if (!article) return {};
+  const post = await getPostBySlug(slug);
+  if (!post) return {};
+
+  const imagePath = (post.featuredImagePath as string) || null;
+  const featuredImage = post.featuredImage as { url?: string } | null;
+  const imageUrl = featuredImage?.url || imagePath;
 
   return {
-    title: article.pageTitle,
-    description: article.description,
+    title: post.pageTitle || post.title,
+    description: post.excerpt,
     alternates: {
-      canonical: `https://onamidojo.fr/blog/${article.slug}`,
+      canonical: `https://onamidojo.fr/blog/${post.slug}`,
     },
     openGraph: {
-      title: article.pageTitle,
-      description: article.description,
-      url: `https://onamidojo.fr/blog/${article.slug}`,
+      title: post.pageTitle || post.title,
+      description: post.excerpt || '',
+      url: `https://onamidojo.fr/blog/${post.slug}`,
       type: 'article',
-      ...(article.image && {
+      ...(imageUrl && {
         images: [
           {
-            url: article.image,
+            url: imageUrl,
             width: 1200,
             height: 630,
-            alt: article.title,
+            alt: post.title,
           },
         ],
       }),
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.pageTitle,
-      description: article.description,
-      ...(article.image && { images: [article.image] }),
+      title: post.pageTitle || post.title,
+      description: post.excerpt || '',
+      ...(imageUrl && { images: [imageUrl] }),
     },
   };
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  'bg-slate-800': 'bg-slate-800 text-white',
+  'bg-red-700': 'bg-red-700 text-white',
+  'bg-purple-700': 'bg-purple-700 text-white',
+  'bg-orange-600': 'bg-orange-600 text-white',
+  'bg-indigo-900': 'bg-indigo-900 text-white',
+};
+
+function getCategoryBadgeClass(color?: string | null): string {
+  if (color && CATEGORY_COLORS[color]) return CATEGORY_COLORS[color];
+  return 'bg-indigo-900 text-white';
 }
 
 export default async function ArticlePage({
@@ -55,13 +74,27 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
-  if (!article) notFound();
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
 
-  // Get related articles (same category, excluding current)
-  const related = articles
-    .filter((a) => a.category === article.category && a.slug !== article.slug)
+  const category = post.category as { slug?: string; name?: string; color?: string; id?: string } | null;
+  const imagePath = (post.featuredImagePath as string) || null;
+  const featuredImage = post.featuredImage as { url?: string; alt?: string } | null;
+  const imageUrl = featuredImage?.url || imagePath;
+  const htmlContent = post.htmlContent as string | null;
+
+  // Get related articles (same category)
+  const allPosts = await getPosts(200);
+  const related = allPosts
+    .filter((p) => {
+      if (p.slug === post.slug) return false;
+      const pCat = p.category as { id?: string } | null;
+      return pCat?.id === category?.id;
+    })
     .slice(0, 3);
+
+  const publishedDate = post.publishedDate || '2026-03-08';
+  const categoryName = category?.name || '';
 
   return (
     <div className="min-h-screen bg-[#faf9f6] pt-28 pb-20">
@@ -76,40 +109,32 @@ export default async function ArticlePage({
             Blog
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-slate-900 truncate max-w-[200px]">{article.title}</span>
+          <span className="text-slate-900 truncate max-w-[200px]">{post.title}</span>
         </nav>
       </div>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Article Header */}
         <header className="mb-10">
-          <span
-            className={`text-[10px] px-3 py-1 font-bold uppercase tracking-widest rounded-full inline-block mb-4 ${
-              article.category === 'kyokushin'
-                ? 'bg-slate-800 text-white'
-                : article.category === 'kempo'
-                  ? 'bg-red-700 text-white'
-                  : article.category === 'enfants'
-                    ? 'bg-purple-700 text-white'
-                    : article.category === 'competition'
-                      ? 'bg-orange-600 text-white'
-                      : 'bg-indigo-900 text-white'
-            }`}
-          >
-            {article.categoryLabel}
-          </span>
+          {category && (
+            <span
+              className={`text-[10px] px-3 py-1 font-bold uppercase tracking-widest rounded-full inline-block mb-4 ${getCategoryBadgeClass(category.color)}`}
+            >
+              {category.name}
+            </span>
+          )}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-slate-900 leading-tight mb-6">
-            {article.title}
+            {post.title}
           </h1>
           <div className="w-20 h-1 bg-red-700"></div>
         </header>
 
         {/* Hero Image */}
-        {article.image && (
+        {imageUrl && (
           <div className="aspect-[16/9] relative overflow-hidden rounded-sm mb-10 shadow-lg">
             <Image
-              src={article.image}
-              alt={article.title}
+              src={imageUrl}
+              alt={featuredImage?.alt || post.title}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 896px"
@@ -119,10 +144,16 @@ export default async function ArticlePage({
         )}
 
         {/* Article Content */}
-        <div
-          className="article-content"
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+        {htmlContent ? (
+          <div
+            className="article-content"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
+        ) : (
+          <div className="article-content">
+            <RichText data={post.content} />
+          </div>
+        )}
 
         {/* CTA */}
         <div className="mt-16 p-8 bg-indigo-950 text-white rounded-sm">
@@ -150,36 +181,42 @@ export default async function ArticlePage({
             Articles similaires
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {related.map((rel) => (
-              <Link
-                key={rel.slug}
-                href={`/blog/${rel.slug}`}
-                className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
-              >
-                <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
-                  {rel.image ? (
-                    <Image
-                      src={rel.image}
-                      alt={rel.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 to-indigo-800 flex items-center justify-center">
-                      <span className="text-white/20 font-serif text-5xl font-black select-none">
-                        大波
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-5">
-                  <h3 className="font-serif font-bold text-slate-900 group-hover:text-red-700 transition-colors line-clamp-2">
-                    {rel.title}
-                  </h3>
-                </div>
-              </Link>
-            ))}
+            {related.map((rel) => {
+              const relImagePath = rel.featuredImagePath as string | null;
+              const relFeaturedImage = rel.featuredImage as { url?: string; alt?: string } | null;
+              const relImageUrl = relFeaturedImage?.url || relImagePath;
+
+              return (
+                <Link
+                  key={rel.slug}
+                  href={`/blog/${rel.slug}`}
+                  className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
+                    {relImageUrl ? (
+                      <Image
+                        src={relImageUrl}
+                        alt={relFeaturedImage?.alt || rel.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 to-indigo-800 flex items-center justify-center">
+                        <span className="text-white/20 font-serif text-5xl font-black select-none">
+                          大波
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif font-bold text-slate-900 group-hover:text-red-700 transition-colors line-clamp-2">
+                      {rel.title}
+                    </h3>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
           <div className="text-center mt-10">
             <Link
@@ -203,7 +240,7 @@ export default async function ArticlePage({
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://onamidojo.fr' },
               { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://onamidojo.fr/blog' },
-              { '@type': 'ListItem', position: 3, name: article.title },
+              { '@type': 'ListItem', position: 3, name: post.title },
             ],
           }),
         }}
@@ -215,14 +252,14 @@ export default async function ArticlePage({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Article',
-            headline: article.title,
-            description: article.description,
+            headline: post.title,
+            description: post.excerpt,
             inLanguage: 'fr',
-            articleSection: article.categoryLabel,
-            datePublished: '2026-03-08',
-            dateModified: '2026-03-09',
-            ...(article.image && {
-              image: `https://onamidojo.fr${article.image}`,
+            articleSection: categoryName,
+            datePublished: publishedDate,
+            dateModified: publishedDate,
+            ...(imageUrl && {
+              image: imageUrl.startsWith('/') ? `https://onamidojo.fr${imageUrl}` : imageUrl,
             }),
             author: {
               '@type': 'Organization',
@@ -242,7 +279,7 @@ export default async function ArticlePage({
             },
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://onamidojo.fr/blog/${article.slug}`,
+              '@id': `https://onamidojo.fr/blog/${post.slug}`,
             },
           }),
         }}
