@@ -27,11 +27,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const posts = await getPosts(200);
-  const articlePages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date('2026-03-08'),
-  }));
-
-  return [...staticPages, ...articlePages];
+  try {
+    const posts = await getPosts(200);
+    const articlePages: MetadataRoute.Sitemap = posts.map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date('2026-03-08'),
+    }));
+    return [...staticPages, ...articlePages];
+  } catch {
+    return staticPages;
+  }
 }

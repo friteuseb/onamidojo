@@ -7,8 +7,12 @@ import RichText from '@/components/RichText';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export async function generateStaticParams() {
-  const posts = await getPosts(200);
-  return posts.map((post) => ({ slug: post.slug }));
+  try {
+    const posts = await getPosts(200);
+    return posts.map((post) => ({ slug: post.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

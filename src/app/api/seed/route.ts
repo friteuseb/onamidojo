@@ -12,21 +12,40 @@ export async function POST() {
   const payload = await getPayload({ config })
   const results: string[] = []
 
-  // 1. Créer l'utilisateur admin
+  // 1. Créer ou mettre à jour l'utilisateur admin
   try {
-    await payload.create({
+    const existingAdmin = await payload.find({
       collection: 'users',
-      data: {
-        email: 'admin@onamidojo.fr',
-        password: 'On@mi2026!Dojo#Kx',
-        firstName: 'Admin',
-        lastName: 'Onami',
-        role: 'admin',
-      },
+      where: { email: { equals: 'admin@onamidojo.fr' } },
+      limit: 1,
     })
-    results.push('Admin créé (admin@onamidojo.fr)')
-  } catch {
-    results.push('Admin existe déjà')
+    if (existingAdmin.docs.length > 0) {
+      await payload.update({
+        collection: 'users',
+        id: existingAdmin.docs[0].id,
+        data: {
+          password: 'On@mi2026!Dojo#Kx',
+          firstName: 'Admin',
+          lastName: 'Onami',
+          role: 'admin',
+        },
+      })
+      results.push('Admin mis à jour (admin@onamidojo.fr)')
+    } else {
+      await payload.create({
+        collection: 'users',
+        data: {
+          email: 'admin@onamidojo.fr',
+          password: 'On@mi2026!Dojo#Kx',
+          firstName: 'Admin',
+          lastName: 'Onami',
+          role: 'admin',
+        },
+      })
+      results.push('Admin créé (admin@onamidojo.fr)')
+    }
+  } catch (e) {
+    results.push(`Erreur admin: ${(e as Error).message}`)
   }
 
   // 2. Créer les catégories
