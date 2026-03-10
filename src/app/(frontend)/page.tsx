@@ -578,7 +578,7 @@ export default async function OnamiDojoHome() {
                 <p><strong>Adresse :</strong> 24 rue des Cordeliers</p>
                 <p><strong>Code postal :</strong> 80000 Amiens</p>
                 <p><strong>Téléphone :</strong> <a href="tel:0766222745" className="text-red-700 hover:underline">07 66 22 27 45</a></p>
-                <p><strong>Email :</strong> <a href="mailto:contact@onamidojo.fr" className="text-red-700 hover:underline">contact@onamidojo.fr</a></p>
+                <p><strong>Email :</strong> <a href="mailto:onamidojo@yahoo.com" className="text-red-700 hover:underline">onamidojo@yahoo.com</a></p>
               </div>
             </div>
           </div>
@@ -698,7 +698,7 @@ export default async function OnamiDojoHome() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Email</h3>
-                    <p className="text-slate-600"><a href="mailto:contact@onamidojo.fr" className="hover:text-red-700">contact@onamidojo.fr</a></p>
+                    <p className="text-slate-600"><a href="mailto:onamidojo@yahoo.com" className="hover:text-red-700">onamidojo@yahoo.com</a></p>
                   </div>
                 </div>
               </div>

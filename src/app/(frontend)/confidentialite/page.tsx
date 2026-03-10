@@ -34,7 +34,7 @@ export default function Confidentialite() {
             <ul className="text-slate-600 mt-4 space-y-2">
               <li><strong>Association Onami Dojo</strong></li>
               <li>Amiens, France</li>
-              <li>Email : contact@onamidojo.fr</li>
+              <li>Email : onamidojo@yahoo.com</li>
             </ul>
           </section>
 
@@ -120,7 +120,7 @@ export default function Confidentialite() {
               <li><strong>Droit à la limitation :</strong> limiter le traitement de vos données</li>
             </ul>
             <p className="text-slate-600 mt-4">
-              Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@onamidojo.fr" className="text-red-700 hover:underline">contact@onamidojo.fr</a>
+              Pour exercer ces droits, contactez-nous à : <a href="mailto:onamidojo@yahoo.com" className="text-red-700 hover:underline">onamidojo@yahoo.com</a>
             </p>
           </section>
 

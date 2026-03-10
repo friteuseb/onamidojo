@@ -12,7 +12,7 @@ export default function JsonLd() {
       width: 512,
       height: 512,
     },
-    email: 'contact@onamidojo.fr',
+    email: 'onamidojo@yahoo.com',
     telephone: '+33766222745',
     address: {
       '@type': 'PostalAddress',
@@ -39,7 +39,7 @@ export default function JsonLd() {
     url: 'https://www.onamidojo.fr',
     image: 'https://www.onamidojo.fr/images/og-image.jpg',
     telephone: '+33766222745',
-    email: 'contact@onamidojo.fr',
+    email: 'onamidojo@yahoo.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '24 rue des Cordeliers',

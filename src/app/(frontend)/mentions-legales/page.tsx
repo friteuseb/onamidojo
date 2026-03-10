@@ -22,7 +22,7 @@ export default function MentionsLegales() {
             <ul className="text-slate-600 mt-4 space-y-2">
               <li><strong>Nom de l&apos;association :</strong> Onami Dojo</li>
               <li><strong>Siège social :</strong> Amiens, France</li>
-              <li><strong>Email :</strong> contact@onamidojo.fr</li>
+              <li><strong>Email :</strong> onamidojo@yahoo.com</li>
               <li><strong>Directeur de la publication :</strong> Olivier Leclercq</li>
             </ul>
           </section>
@@ -91,7 +91,7 @@ export default function MentionsLegales() {
             <h2 className="text-2xl font-serif font-bold text-indigo-950 mb-4">8. Contact</h2>
             <p className="text-slate-600 leading-relaxed">
               Pour toute question concernant ces mentions légales, vous pouvez nous contacter à
-              l&apos;adresse : <a href="mailto:contact@onamidojo.fr" className="text-red-700 hover:underline">contact@onamidojo.fr</a>
+              l&apos;adresse : <a href="mailto:onamidojo@yahoo.com" className="text-red-700 hover:underline">onamidojo@yahoo.com</a>
             </p>
           </section>
         </div>

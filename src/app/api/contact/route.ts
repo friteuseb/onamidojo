@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
     // Envoi via Brevo si la clé est configurée
     const brevoKey = process.env.BREVO_API_KEY;
-    const recipientEmail = process.env.CONTACT_EMAIL || 'contact@onamidojo.fr';
+    const recipientEmail = process.env.CONTACT_EMAIL || 'onamidojo@yahoo.com';
 
     if (brevoKey) {
       const response = await fetch('https://api.brevo.com/v3/smtp/email', {
