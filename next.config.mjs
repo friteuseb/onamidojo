@@ -40,6 +40,7 @@ const nextConfig = {
               "img-src 'self' data: https://www.google-analytics.com https://*.public.blob.vercel-storage.com",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
+              "frame-src https://www.google.com",
               "frame-ancestors 'none'",
             ].join('; '),
           },

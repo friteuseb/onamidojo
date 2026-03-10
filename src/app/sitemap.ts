@@ -25,6 +25,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}/reglement-interieur`,
       lastModified: new Date('2026-01-15'),
     },
+    {
+      url: `${SITE_URL}/kempo-karate-amiens`,
+      lastModified: new Date('2026-03-10'),
+    },
+    {
+      url: `${SITE_URL}/kyokushin-karate-amiens`,
+      lastModified: new Date('2026-03-10'),
+    },
   ];
 
   try {

@@ -217,5 +217,178 @@ export const Homepage: GlobalConfig = {
         description: 'Note affichée sous le planning des cours',
       },
     },
+
+    // --- Schedule (Planning des cours) ---
+    {
+      name: 'schedule',
+      type: 'array',
+      label: 'Planning des cours',
+      fields: [
+        {
+          name: 'day',
+          type: 'text',
+          label: 'Jour',
+          required: true,
+        },
+        {
+          name: 'courses',
+          type: 'array',
+          label: 'Cours',
+          fields: [
+            {
+              name: 'time',
+              type: 'text',
+              label: 'Horaire',
+              required: true,
+            },
+            {
+              name: 'name',
+              type: 'text',
+              label: 'Nom du cours',
+              required: true,
+            },
+            {
+              name: 'location',
+              type: 'text',
+              label: 'Lieu',
+              defaultValue: '24 rue des Cordeliers',
+            },
+            {
+              name: 'color',
+              type: 'select',
+              label: 'Couleur',
+              options: [
+                { label: 'Rouge', value: 'red' },
+                { label: 'Ardoise', value: 'slate' },
+                { label: 'Violet', value: 'purple' },
+                { label: 'Bleu', value: 'blue' },
+                { label: 'Orange', value: 'orange' },
+                { label: 'Indigo', value: 'indigo' },
+              ],
+            },
+          ],
+        },
+      ],
+      defaultValue: [
+        {
+          day: 'Lundi',
+          courses: [
+            { time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' },
+          ],
+        },
+        {
+          day: 'Mardi',
+          courses: [
+            { time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' },
+          ],
+        },
+        {
+          day: 'Mercredi',
+          courses: [
+            { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' },
+            { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' },
+          ],
+        },
+        {
+          day: 'Jeudi',
+          courses: [
+            { time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' },
+          ],
+        },
+        {
+          day: 'Vendredi',
+          courses: [
+            { time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' },
+          ],
+        },
+        {
+          day: 'Samedi',
+          courses: [
+            { time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' },
+          ],
+        },
+        {
+          day: 'Dimanche',
+          courses: [
+            { time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' },
+          ],
+        },
+      ],
+    },
+
+    // --- Dojo Info ---
+    {
+      name: 'dojo',
+      type: 'group',
+      label: 'Informations Dojo',
+      fields: [
+        {
+          name: 'address',
+          type: 'text',
+          label: 'Adresse',
+          defaultValue: '24 rue des Cordeliers',
+        },
+        {
+          name: 'city',
+          type: 'text',
+          label: 'Ville',
+          defaultValue: '80000 Amiens',
+        },
+        {
+          name: 'phone',
+          type: 'text',
+          label: 'Téléphone',
+          defaultValue: '07 66 22 27 45',
+        },
+        {
+          name: 'phoneLink',
+          type: 'text',
+          label: 'Lien téléphone',
+          defaultValue: '0766222745',
+        },
+        {
+          name: 'email',
+          type: 'text',
+          label: 'Email',
+          defaultValue: 'onamidojo@yahoo.com',
+        },
+      ],
+    },
+
+    // --- Documents ---
+    {
+      name: 'documents',
+      type: 'array',
+      label: 'Documents téléchargeables',
+      maxRows: 8,
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Titre',
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'text',
+          label: 'Description',
+        },
+        {
+          name: 'file',
+          type: 'text',
+          label: 'Chemin du fichier',
+          required: true,
+          admin: {
+            description: 'Ex: /documents/licence-ffk-2025-2026.pdf',
+          },
+        },
+      ],
+      defaultValue: [
+        { title: 'Licence FFK', description: 'Demande de licence 2025/2026', file: '/documents/licence-ffk-2025-2026.pdf' },
+        { title: 'Inscription Onami', description: 'Formulaire d\'inscription club', file: '/documents/inscription-onami-2025-2026.pdf' },
+        { title: 'Équipements', description: 'Catalogue protections & dogis', file: '/documents/equipements-protection-onami.pdf' },
+        { title: 'Broderies', description: 'Personnalisations & broderies', file: '/documents/personnalisations-broderies-onami.pdf' },
+      ],
+    },
   ],
 }

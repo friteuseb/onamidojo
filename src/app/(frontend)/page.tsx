@@ -51,53 +51,6 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   mappin: <MapPin className="w-8 h-8" />,
 };
 
-// --- Schedule Data (reste statique pour l'instant) ---
-const scheduleData = [
-  {
-    day: 'Lundi',
-    courses: [
-      { time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }
-    ]
-  },
-  {
-    day: 'Mardi',
-    courses: [
-      { time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }
-    ]
-  },
-  {
-    day: 'Mercredi',
-    courses: [
-      { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' },
-      { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }
-    ]
-  },
-  {
-    day: 'Jeudi',
-    courses: [
-      { time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }
-    ]
-  },
-  {
-    day: 'Vendredi',
-    courses: [
-      { time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }
-    ]
-  },
-  {
-    day: 'Samedi',
-    courses: [
-      { time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' }
-    ]
-  },
-  {
-    day: 'Dimanche',
-    courses: [
-      { time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' }
-    ]
-  }
-];
-
 // --- Types ---
 interface HomepageFeature {
   icon?: string | null
@@ -177,6 +130,28 @@ const DEFAULTS = {
     trialDescription: 'Venez découvrir nos disciplines sans engagement. Prévoyez une tenue de sport et de l\'eau.',
   },
   scheduleNote: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau. Reprise des cours : 16 septembre 2025.',
+  schedule: [
+    { day: 'Lundi', courses: [{ time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
+    { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
+    { day: 'Mercredi', courses: [{ time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }] },
+    { day: 'Jeudi', courses: [{ time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
+    { day: 'Vendredi', courses: [{ time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
+    { day: 'Samedi', courses: [{ time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' }] },
+    { day: 'Dimanche', courses: [{ time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' }] },
+  ],
+  dojo: {
+    address: '24 rue des Cordeliers',
+    city: '80000 Amiens',
+    phone: '07 66 22 27 45',
+    phoneLink: '0766222745',
+    email: 'onamidojo@yahoo.com',
+  },
+  documents: [
+    { title: "Licence FFK", description: "Demande de licence 2025/2026", file: "/documents/licence-ffk-2025-2026.pdf" },
+    { title: "Inscription Onami", description: "Formulaire d'inscription club", file: "/documents/inscription-onami-2025-2026.pdf" },
+    { title: "Équipements", description: "Catalogue protections & dogis", file: "/documents/equipements-protection-onami.pdf" },
+    { title: "Broderies", description: "Personnalisations & broderies", file: "/documents/personnalisations-broderies-onami.pdf" },
+  ],
 };
 
 const DEFAULT_INSTRUCTORS: TeamMember[] = [
@@ -212,6 +187,9 @@ export default async function OnamiDojoHome() {
         whyChooseUs: { ...DEFAULTS.whyChooseUs, ...(h.whyChooseUs as object || {}) },
         contact: { ...DEFAULTS.contact, ...(h.contact as object || {}) },
         scheduleNote: (h.scheduleNote as string) || DEFAULTS.scheduleNote,
+        schedule: (h.schedule as typeof DEFAULTS.schedule)?.length ? (h.schedule as typeof DEFAULTS.schedule) : DEFAULTS.schedule,
+        dojo: { ...DEFAULTS.dojo, ...(h.dojo as object || {}) },
+        documents: (h.documents as typeof DEFAULTS.documents)?.length ? (h.documents as typeof DEFAULTS.documents) : DEFAULTS.documents,
       };
     }
 
@@ -231,6 +209,9 @@ export default async function OnamiDojoHome() {
   const kyokushin = homepage.disciplines.kyokushin;
   const why = homepage.whyChooseUs;
   const contact = homepage.contact;
+  const dojo = homepage.dojo;
+  const scheduleData = homepage.schedule;
+  const documents = homepage.documents;
 
   return (
     <div className="min-h-screen bg-[#faf9f6] text-slate-900 selection:bg-indigo-100 selection:text-indigo-900 font-sans overflow-x-hidden">
@@ -529,12 +510,7 @@ export default async function OnamiDojoHome() {
 
           {/* Download Section */}
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { title: "Licence FFK", desc: "Demande de licence 2025/2026", file: "/documents/licence-ffk-2025-2026.pdf" },
-              { title: "Inscription Onami", desc: "Formulaire d'inscription club", file: "/documents/inscription-onami-2025-2026.pdf" },
-              { title: "Équipements", desc: "Catalogue protections & dogis", file: "/documents/equipements-protection-onami.pdf" },
-              { title: "Broderies", desc: "Personnalisations & broderies", file: "/documents/personnalisations-broderies-onami.pdf" },
-            ].map((doc, idx) => (
+            {documents.map((doc, idx) => (
               <a
                 key={idx}
                 href={doc.file}
@@ -548,7 +524,7 @@ export default async function OnamiDojoHome() {
                 </div>
                 <div className="min-w-0">
                   <p className="font-bold text-slate-900 truncate">{doc.title}</p>
-                  <p className="text-sm text-slate-500 truncate">{doc.desc}</p>
+                  <p className="text-sm text-slate-500 truncate">{doc.description}</p>
                 </div>
               </a>
             ))}
@@ -577,11 +553,25 @@ export default async function OnamiDojoHome() {
                 </div>
               </div>
               <div className="space-y-2 text-slate-600 text-sm md:text-base">
-                <p><strong>Adresse :</strong> 24 rue des Cordeliers</p>
-                <p><strong>Code postal :</strong> 80000 Amiens</p>
-                <p><strong>Téléphone :</strong> <a href="tel:0766222745" className="text-red-700 hover:underline">07 66 22 27 45</a></p>
-                <p><strong>Email :</strong> <a href="mailto:onamidojo@yahoo.com" className="text-red-700 hover:underline">onamidojo@yahoo.com</a></p>
+                <p><strong>Adresse :</strong> {dojo.address}</p>
+                <p><strong>Code postal :</strong> {dojo.city}</p>
+                <p><strong>Téléphone :</strong> <a href={`tel:${dojo.phoneLink}`} className="text-red-700 hover:underline">{dojo.phone}</a></p>
+                <p><strong>Email :</strong> <a href={`mailto:${dojo.email}`} className="text-red-700 hover:underline">{dojo.email}</a></p>
               </div>
+            </div>
+          </div>
+          <div className="max-w-2xl mx-auto md:mx-0 mt-8">
+            <div className="aspect-[16/9] w-full border border-slate-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.8!2d2.2958!3d49.8941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e7840e3f5e5555%3A0x0!2s24%20Rue%20des%20Cordeliers%2C%2080000%20Amiens!5e0!3m2!1sfr!2sfr!4v1"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localisation Onami Dojo - 24 rue des Cordeliers, Amiens"
+              />
             </div>
           </div>
         </div>
@@ -691,7 +681,7 @@ export default async function OnamiDojoHome() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Téléphone</h3>
-                    <p className="text-slate-600"><a href="tel:0766222745" className="hover:text-red-700">07 66 22 27 45</a></p>
+                    <p className="text-slate-600"><a href={`tel:${dojo.phoneLink}`} className="hover:text-red-700">{dojo.phone}</a></p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -700,7 +690,7 @@ export default async function OnamiDojoHome() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Email</h3>
-                    <p className="text-slate-600"><a href="mailto:onamidojo@yahoo.com" className="hover:text-red-700">onamidojo@yahoo.com</a></p>
+                    <p className="text-slate-600"><a href={`mailto:${dojo.email}`} className="hover:text-red-700">{dojo.email}</a></p>
                   </div>
                 </div>
               </div>
