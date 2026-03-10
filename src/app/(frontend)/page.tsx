@@ -15,6 +15,8 @@ import {
 import ContactForm from '@/components/ContactForm';
 import { getPosts, getTeamMembers, getHomepage } from '@/lib/payload-helpers';
 
+export const revalidate = 300;
+
 // --- Custom Components ---
 
 const SeigaihaPattern = () => (
