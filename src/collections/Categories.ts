@@ -6,6 +6,8 @@ export const Categories: CollectionConfig = {
   slug: 'categories',
   admin: {
     useAsTitle: 'name',
+    group: 'Contenu',
+    description: 'Catégories pour organiser les articles du blog',
   },
   access: {
     read: anyone,

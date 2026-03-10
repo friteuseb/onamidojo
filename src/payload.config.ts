@@ -22,6 +22,7 @@ export default buildConfig({
     user: Users.slug,
     meta: {
       titleSuffix: ' — Onami Dojo',
+      description: 'Administration du site Onami Dojo',
     },
   },
   collections: [Users, Posts, Categories, Media, TeamMembers],

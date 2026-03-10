@@ -8,6 +8,8 @@ export const Posts: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'publishedDate', '_status'],
+    group: 'Contenu',
+    description: 'Articles du blog publiés sur le site',
   },
   versions: {
     drafts: true,

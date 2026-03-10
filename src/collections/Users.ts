@@ -6,6 +6,8 @@ export const Users: CollectionConfig = {
   auth: true,
   admin: {
     useAsTitle: 'email',
+    group: 'Administration',
+    description: 'Comptes utilisateurs ayant accès au backoffice',
   },
   access: {
     create: isAdmin,

@@ -6,6 +6,8 @@ export const TeamMembers: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'role', 'discipline', 'order'],
+    group: 'Dojo',
+    description: 'Enseignants et instructeurs affichés sur la page d\'accueil',
   },
   access: {
     read: anyone,

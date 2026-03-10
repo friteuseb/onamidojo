@@ -3,6 +3,10 @@ import { anyone, isAuthenticated } from '@/access/roles'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  admin: {
+    group: 'Contenu',
+    description: 'Images et fichiers utilisés sur le site',
+  },
   upload: {
     staticDir: '../public/media',
     imageSizes: [
