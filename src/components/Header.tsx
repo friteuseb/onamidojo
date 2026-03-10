@@ -21,7 +21,15 @@ export default function Header() {
             </div>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/#disciplines" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Disciplines</Link>
+            <div className="relative group">
+              <Link href="/#disciplines" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium py-2">Disciplines</Link>
+              <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="bg-white border border-slate-200 shadow-lg rounded-sm py-2 min-w-[200px]">
+                  <Link href="/kempo-karate-amiens" className="block px-4 py-2 text-sm text-slate-600 hover:text-red-700 hover:bg-slate-50 transition-colors">Kempo Karaté</Link>
+                  <Link href="/kyokushin-karate-amiens" className="block px-4 py-2 text-sm text-slate-600 hover:text-red-700 hover:bg-slate-50 transition-colors">Kyokushinkai</Link>
+                </div>
+              </div>
+            </div>
             <Link href="/#instructeurs" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Instructeurs</Link>
             <Link href="/#horaires" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Horaires</Link>
             <Link href="/#dojos" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Notre Dojo</Link>
@@ -46,6 +54,8 @@ export default function Header() {
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-4 py-4 space-y-3">
             <Link href="/#disciplines" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Disciplines</Link>
+            <Link href="/kempo-karate-amiens" className="block py-2 pl-4 text-sm text-slate-500 hover:text-red-700" onClick={() => setMobileMenuOpen(false)}>→ Kempo Karaté</Link>
+            <Link href="/kyokushin-karate-amiens" className="block py-2 pl-4 text-sm text-slate-500 hover:text-red-700" onClick={() => setMobileMenuOpen(false)}>→ Kyokushinkai</Link>
             <Link href="/#instructeurs" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Instructeurs</Link>
             <Link href="/#horaires" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Horaires</Link>
             <Link href="/#dojos" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Notre Dojo</Link>

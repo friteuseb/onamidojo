@@ -322,8 +322,11 @@ export default async function OnamiDojoHome() {
                     </li>
                   ))}
                 </ul>
-                <div className="flex items-center gap-4 text-sm text-slate-500">
+                <div className="flex items-center justify-between text-sm text-slate-500 mt-4">
                   <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {kempo.audience}</span>
+                  <Link href="/kempo-karate-amiens" className="text-red-700 font-medium flex items-center gap-1 hover:gap-2 transition-all">
+                    En savoir plus <ChevronRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -356,8 +359,11 @@ export default async function OnamiDojoHome() {
                     </li>
                   ))}
                 </ul>
-                <div className="flex items-center gap-4 text-sm text-slate-500">
+                <div className="flex items-center justify-between text-sm text-slate-500 mt-4">
                   <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {kyokushin.audience}</span>
+                  <Link href="/kyokushin-karate-amiens" className="text-red-700 font-medium flex items-center gap-1 hover:gap-2 transition-all">
+                    En savoir plus <ChevronRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>
