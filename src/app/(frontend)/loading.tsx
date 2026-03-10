@@ -2,8 +2,9 @@ export default function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#faf9f6]" role="status" aria-label="Chargement en cours">
       <div className="text-center">
-        <div className="w-16 h-16 bg-indigo-950 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-          <span className="text-white font-serif font-bold text-2xl" aria-hidden="true">大</span>
+        <div className="w-16 h-16 bg-indigo-950 rounded-full flex flex-col items-center justify-center mx-auto mb-4 animate-pulse">
+          <span className="text-white font-serif font-bold text-sm leading-none" aria-hidden="true">大</span>
+          <span className="text-white font-serif font-bold text-sm leading-none" aria-hidden="true">波</span>
         </div>
         <p className="text-slate-500 text-sm font-medium tracking-widest uppercase">Chargement...</p>
       </div>

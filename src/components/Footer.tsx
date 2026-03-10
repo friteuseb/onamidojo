@@ -8,8 +8,9 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-indigo-950">
-                <span className="font-serif font-bold text-lg">大</span>
+              <div className="w-10 h-10 bg-white rounded-full flex flex-col items-center justify-center text-indigo-950">
+                <span className="font-serif font-bold text-[10px] leading-none">大</span>
+                <span className="font-serif font-bold text-[10px] leading-none">波</span>
               </div>
               <span className="text-2xl font-serif font-black tracking-tight">ONAMI DOJO</span>
             </div>
