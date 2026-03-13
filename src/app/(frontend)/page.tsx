@@ -155,9 +155,9 @@ const DEFAULTS = {
 };
 
 const DEFAULT_INSTRUCTORS: TeamMember[] = [
-  { name: "Senseï Olivier Leclerc", role: "Directeur Technique - Kempo", rank: "Ceinture Noire", achievements: [{ label: "3ème au Championnat du Monde WKB" }, { label: "5x Podium Européen" }, { label: "Vice-Champion d'Europe 2023 & 2024" }], photoPath: "/images/instructors/olivier.png" },
-  { name: "Senseï Xavier Gadoux", role: "Responsable Kyokushin", rank: "3ème Dan", achievements: [{ label: "Champion de France" }, { label: "WKB Branch Chief" }, { label: "World Kyokushin Budokai France" }], photoPath: "/images/instructors/xavier.jpg" },
-  { name: "Senseï Marc Yeu", role: "Instructeur Kempo", rank: "2ème Dan", achievements: [{ label: "Instructeur certifié" }, { label: "Spécialiste Kumite" }], photoPath: "/images/instructors/marc.jpg" },
+  { name: "Senseï Olivier Leclercq", role: "Directeur Technique - Kempo", rank: "3ème Dan", achievements: [{ label: "3ème Dan FFKDA" }, { label: "1er Dan Kyokushin WKB" }, { label: "3ème au Championnat du Monde WKB" }, { label: "5x Podium Européen" }, { label: "Vice-Champion d'Europe 2023 & 2024" }], photoPath: "/images/instructors/olivier.png" },
+  { name: "Senseï Xavier Gadoux", role: "Responsable Kyokushin", rank: "3ème Dan", achievements: [{ label: "3ème Dan Kyokushin" }, { label: "Branch Chief WKB France" }, { label: "Champion de France" }], photoPath: "/images/instructors/xavier.jpg" },
+  { name: "Senseï Marc Yeu", role: "Instructeur Kempo", rank: "2ème Dan", achievements: [{ label: "2ème Dan FFKDA" }, { label: "2ème Dan Kempo Jutsu" }, { label: "1er Dan Aiki Jutsu" }, { label: "1er Dan Judo/Jujitsu FFJDA" }], photoPath: "/images/instructors/marc.jpg" },
   { name: "Senseï Anibal Barreira", role: "Instructeur Kempo", rank: "1er Dan", achievements: [{ label: "Instructeur certifié" }, { label: "Formation continue" }], photoPath: "/images/instructors/anibal.jpg" },
 ];
 

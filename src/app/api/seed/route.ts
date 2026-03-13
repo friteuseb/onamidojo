@@ -142,11 +142,13 @@ export async function POST() {
   // 4. Importer les instructeurs
   const instructors = [
     {
-      name: 'Senseï Olivier Leclerc',
+      name: 'Senseï Olivier Leclercq',
       role: 'Directeur Technique - Kempo',
       discipline: 'kempo',
-      rank: 'Ceinture Noire',
+      rank: '3ème Dan',
       achievements: [
+        { label: '3ème Dan FFKDA' },
+        { label: '1er Dan Kyokushin WKB' },
         { label: '3ème au Championnat du Monde WKB' },
         { label: '5x Podium Européen' },
         { label: 'Vice-Champion d\'Europe 2023 & 2024' },
@@ -160,9 +162,9 @@ export async function POST() {
       discipline: 'kyokushin',
       rank: '3ème Dan',
       achievements: [
+        { label: '3ème Dan Kyokushin' },
+        { label: 'Branch Chief WKB France' },
         { label: 'Champion de France' },
-        { label: 'WKB Branch Chief' },
-        { label: 'World Kyokushin Budokai France' },
       ],
       photoPath: '/images/instructors/xavier.jpg',
       order: 2,
@@ -173,8 +175,10 @@ export async function POST() {
       discipline: 'kempo',
       rank: '2ème Dan',
       achievements: [
-        { label: 'Instructeur certifié' },
-        { label: 'Spécialiste Kumite' },
+        { label: '2ème Dan FFKDA' },
+        { label: '2ème Dan Kempo Jutsu' },
+        { label: '1er Dan Aiki Jutsu' },
+        { label: '1er Dan Judo/Jujitsu FFJDA' },
       ],
       photoPath: '/images/instructors/marc.jpg',
       order: 3,

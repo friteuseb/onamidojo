@@ -124,7 +124,7 @@ const RESULTS = [
   { icon: <Trophy className="w-6 h-6" />, label: '3ème au Championnat du Monde WKB' },
   { icon: <Medal className="w-6 h-6" />, label: '5x Podium Européen' },
   { icon: <Award className="w-6 h-6" />, label: 'Vice-Champion d\'Europe 2023 & 2024' },
-  { icon: <Star className="w-6 h-6" />, label: 'Encadrement par Senseï Olivier Leclerc' },
+  { icon: <Star className="w-6 h-6" />, label: 'Encadrement par Senseï Olivier Leclercq' },
 ];
 
 // --- Page Component ---
