@@ -43,7 +43,7 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-indigo-950 mb-4">3. Conception et développement</h2>
             <p className="text-slate-600 leading-relaxed">
-              Ce site a été conçu et développé par <strong>Cyril Wolfangel</strong>.
+              Ce site a été conçu et développé par <a href="https://cyril-wolfangel.com/" target="_blank" rel="noopener noreferrer" className="text-indigo-700 hover:text-indigo-900 underline"><strong>Cyril Wolfangel</strong></a>.
             </p>
           </section>
 
