@@ -12,21 +12,22 @@ import {
   Brain,
   BookOpen,
   ExternalLink,
+  Youtube,
 } from 'lucide-react';
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Kyokushin Karaté à Amiens | Full Contact Traditionnel | Onami Dojo',
+  title: 'Karaté Kyokushinkai à Amiens | Full Contact Traditionnel | Onami Dojo',
   description:
-    "Pratiquez le Kyokushin Karaté à Amiens au Onami Dojo. L'école de l'ultime vérité : karaté full contact, conditionnement physique, mental d'acier. Ados et adultes. 2 cours d'essai gratuits.",
+    "Pratiquez le Karaté Kyokushinkai à Amiens au Onami Dojo. L'école de l'ultime vérité : karaté full contact, conditionnement physique, mental d'acier. Ados et adultes. 2 cours d'essai gratuits.",
   alternates: {
     canonical: 'https://www.onamidojo.fr/kyokushin-karate-amiens',
   },
   openGraph: {
-    title: 'Kyokushin Karaté à Amiens | Full Contact Traditionnel | Onami Dojo',
+    title: 'Karaté Kyokushinkai à Amiens | Full Contact Traditionnel | Onami Dojo',
     description:
-      "Pratiquez le Kyokushin Karaté à Amiens au Onami Dojo. L'école de l'ultime vérité : karaté full contact, conditionnement physique, mental d'acier.",
+      "Pratiquez le Karaté Kyokushinkai à Amiens au Onami Dojo. L'école de l'ultime vérité : karaté full contact, conditionnement physique, mental d'acier.",
     url: 'https://www.onamidojo.fr/kyokushin-karate-amiens',
     siteName: 'Onami Dojo',
     locale: 'fr_FR',
@@ -85,7 +86,7 @@ const CURRICULUM = [
   {
     icon: <Swords className="w-6 h-6" />,
     title: 'Kumite',
-    description: 'Combat full contact : affrontements à frappes réelles, le coeur du Kyokushin.',
+    description: 'Combat full contact : affrontements à frappes réelles, le coeur du Karaté Kyokushinkai.',
   },
   {
     icon: <Flame className="w-6 h-6" />,
@@ -178,7 +179,7 @@ export default function KyokushinKarateAmiensPage() {
         <SeigaihaPattern />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
-            title="Qu'est-ce que le Kyokushin ?"
+            title="Qu'est-ce que le Karaté Kyokushinkai ?"
             subtitle="L'ultime vérité"
             japanese="極真"
           />
@@ -187,7 +188,7 @@ export default function KyokushinKarateAmiensPage() {
             <div className="bg-white border border-slate-200 p-6 md:p-10 shadow-sm">
               <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6">
                 Fondé par <strong className="text-indigo-950">Sosai Masutatsu Oyama</strong>, le
-                Kyokushin (<span className="font-serif">極真</span>) signifie{' '}
+                Karaté Kyokushinkai (<span className="font-serif">極真</span>) signifie{' '}
                 <strong className="text-red-700">&laquo;&nbsp;l&apos;ultime vérité&nbsp;&raquo;</strong>.
                 C&apos;est un style de karaté réputé pour son approche{' '}
                 <strong>full contact</strong> : les combats se pratiquent à frappes réelles, sans
@@ -195,7 +196,7 @@ export default function KyokushinKarateAmiensPage() {
                 exceptionnels.
               </p>
               <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6">
-                Contrairement à de nombreux styles de karaté, le Kyokushin met l&apos;accent sur le
+                Contrairement à de nombreux styles de karaté, le Karaté Kyokushinkai met l&apos;accent sur le
                 combat réel et le conditionnement du corps. Chaque entraînement est une épreuve qui
                 repousse vos limites, tout en cultivant l&apos;humilité et le respect du partenaire.
               </p>
@@ -219,6 +220,39 @@ export default function KyokushinKarateAmiensPage() {
           <SectionHeading title="Pour qui ?" subtitle="Trouvez votre créneau" japanese="対象" />
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mt-12">
+            {/* Enfants */}
+            <div className="bg-white border border-indigo-200 p-6 md:p-8 hover:shadow-xl transition-all duration-300 md:col-span-2">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-indigo-500 text-white flex items-center justify-center rounded-full flex-shrink-0">
+                  <Users className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900">
+                      Enfants
+                    </h3>
+                    <span className="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-xs font-bold uppercase tracking-widest rounded-sm">
+                      Dès septembre 2026
+                    </span>
+                  </div>
+                  <p className="text-indigo-600 font-medium text-sm">À partir de 5 ans</p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Le Karaté Kyokushinkai pour les enfants dès 5 ans : une discipline qui développe
+                la concentration, la motricité, la confiance en soi et le respect des autres.
+                Des cours adaptés à leur âge, dans une ambiance bienveillante et structurée.
+              </p>
+              <div className="space-y-3 border-t border-slate-100 pt-6">
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Clock className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+                  <span>
+                    <strong>Mercredi</strong> 15h00 - 16h30
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* Ados */}
             <div className="bg-white border border-slate-200 p-6 md:p-8 hover:shadow-xl transition-all duration-300">
               <div className="flex items-start gap-4 mb-6">
@@ -233,7 +267,7 @@ export default function KyokushinKarateAmiensPage() {
                 </div>
               </div>
               <p className="text-slate-600 leading-relaxed mb-6">
-                Le Kyokushin est une école de vie pour les adolescents. Développez force mentale,
+                Le Karaté Kyokushinkai est une école de vie pour les adolescents. Développez force mentale,
                 rigueur, confiance en soi et respect du Bushido. L&apos;entraînement forge le
                 caractère et enseigne la persévérance face à l&apos;adversité.
               </p>
@@ -372,7 +406,7 @@ export default function KyokushinKarateAmiensPage() {
                     <p className="text-slate-900 font-serif font-bold text-lg">
                       Senseï Xavier Gadoux
                     </p>
-                    <p className="text-indigo-700 text-sm font-medium">3ème Dan Kyokushin</p>
+                    <p className="text-indigo-700 text-sm font-medium">3ème Dan Karaté Kyokushinkai</p>
                   </div>
                   <div className="p-4 bg-red-50 border border-red-100">
                     <p className="text-xs font-bold text-red-900 uppercase tracking-widest mb-1">
@@ -381,19 +415,30 @@ export default function KyokushinKarateAmiensPage() {
                     <p className="text-slate-900 font-serif font-bold text-lg">
                       Champion de France
                     </p>
-                    <p className="text-red-700 text-sm font-medium">Kyokushin Karaté</p>
+                    <p className="text-red-700 text-sm font-medium">Karaté Kyokushinkai</p>
                   </div>
                 </div>
 
-                <a
-                  href="https://karatekyokushin.fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-red-700 font-bold hover:text-red-800 transition-colors"
-                >
-                  Visiter karatekyokushin.fr
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  <a
+                    href="https://karatekyokushin.fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-red-700 font-bold hover:text-red-800 transition-colors"
+                  >
+                    Visiter karatekyokushin.fr
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://youtube.com/@xavier.gdx.wkbfrance"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-red-700 font-bold hover:text-red-800 transition-colors"
+                  >
+                    <Youtube className="w-5 h-5" />
+                    Chaîne YouTube WKB France
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -408,7 +453,7 @@ export default function KyokushinKarateAmiensPage() {
             Prêt à relever le défi&nbsp;?
           </h2>
           <p className="text-indigo-200 text-base md:text-lg max-w-2xl mx-auto mb-4">
-            Rejoignez l&apos;Onami Dojo et découvrez le Kyokushin Karaté à Amiens. Deux cours
+            Rejoignez l&apos;Onami Dojo et découvrez le Karaté Kyokushinkai à Amiens. Deux cours
             d&apos;essai gratuits, sans engagement.
           </p>
           <p className="text-indigo-300 text-sm mb-10">

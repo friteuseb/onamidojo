@@ -132,10 +132,10 @@ const DEFAULTS = {
   scheduleNote: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau. Reprise des cours : 16 septembre 2025.',
   schedule: [
     { day: 'Lundi', courses: [{ time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
-    { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
-    { day: 'Mercredi', courses: [{ time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }] },
+    { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
+    { day: 'Mercredi', courses: [{ time: '15h00 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans) · Dès septembre 2026', location: '24 rue des Cordeliers', color: 'indigo' }, { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }] },
     { day: 'Jeudi', courses: [{ time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
-    { day: 'Vendredi', courses: [{ time: '19h00 - 20h30', name: 'Kyokushin Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
+    { day: 'Vendredi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
     { day: 'Samedi', courses: [{ time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' }] },
     { day: 'Dimanche', courses: [{ time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' }] },
   ],
@@ -156,7 +156,7 @@ const DEFAULTS = {
 
 const DEFAULT_INSTRUCTORS: TeamMember[] = [
   { name: "Senseï Olivier Leclercq", role: "Directeur Technique - Kempo", rank: "3ème Dan", achievements: [{ label: "3ème Dan FFKDA" }, { label: "1er Dan Kyokushin WKB" }, { label: "3ème au Championnat du Monde WKB" }, { label: "5x Podium Européen" }, { label: "Vice-Champion d'Europe 2023 & 2024" }], photoPath: "/images/instructors/olivier.png" },
-  { name: "Senseï Xavier Gadoux", role: "Responsable Kyokushin", rank: "3ème Dan", achievements: [{ label: "3ème Dan Kyokushin" }, { label: "Branch Chief WKB France" }, { label: "Champion de France" }], photoPath: "/images/instructors/xavier.jpg" },
+  { name: "Senseï Xavier Gadoux", role: "Responsable Karaté Kyokushinkai", rank: "3ème Dan", achievements: [{ label: "3ème Dan Karaté Kyokushinkai" }, { label: "Branch Chief WKB France" }, { label: "Champion de France" }], photoPath: "/images/instructors/xavier.jpg" },
   { name: "Senseï Marc Yeu", role: "Instructeur Kempo", rank: "2ème Dan", achievements: [{ label: "2ème Dan FFKDA" }, { label: "2ème Dan Kempo Jutsu" }, { label: "1er Dan Aiki Jutsu" }, { label: "1er Dan Judo/Jujitsu FFJDA" }], photoPath: "/images/instructors/marc.jpg" },
   { name: "Senseï Anibal Barreira", role: "Instructeur Kempo", rank: "1er Dan", achievements: [{ label: "Instructeur certifié" }, { label: "Formation continue" }], photoPath: "/images/instructors/anibal.jpg" },
 ];
