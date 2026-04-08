@@ -310,6 +310,15 @@ export const Homepage: GlobalConfig = {
                         { label: 'Indigo', value: 'indigo' },
                       ],
                     },
+                    {
+                      name: 'disabled',
+                      type: 'checkbox',
+                      label: 'Grisé (à venir)',
+                      defaultValue: false,
+                      admin: {
+                        description: 'Affiche le créneau en grisé pour indiquer qu\'il n\'est pas encore actif',
+                      },
+                    },
                   ],
                 },
               ],
@@ -347,9 +356,7 @@ export const Homepage: GlobalConfig = {
                 },
                 {
                   day: 'Samedi',
-                  courses: [
-                    { time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' },
-                  ],
+                  courses: [],
                 },
                 {
                   day: 'Dimanche',

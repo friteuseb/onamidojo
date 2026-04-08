@@ -58,7 +58,6 @@ export default function JsonLd() {
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '16:45', closes: '20:00' },
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '20:30', closes: '22:00' },
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '19:00', closes: '20:30' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '19:00', closes: '20:15' },
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '10:00', closes: '11:30' },
     ],
     priceRange: '€',

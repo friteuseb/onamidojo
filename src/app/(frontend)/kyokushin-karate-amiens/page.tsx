@@ -244,10 +244,10 @@ export default function KyokushinKarateAmiensPage() {
                 Des cours adaptés à leur âge, dans une ambiance bienveillante et structurée.
               </p>
               <div className="space-y-3 border-t border-slate-100 pt-6">
-                <div className="flex items-center gap-3 text-slate-700 text-sm">
-                  <Clock className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+                <div className="flex items-center gap-3 text-gray-400 text-sm opacity-60">
+                  <Clock className="w-4 h-4 text-gray-400 flex-shrink-0" />
                   <span>
-                    <strong>Mercredi</strong> 15h00 - 16h30
+                    <strong>Mercredi</strong> 15h00 - 16h30 <span className="text-xs">(dès septembre 2026)</span>
                   </span>
                 </div>
               </div>
@@ -318,13 +318,6 @@ export default function KyokushinKarateAmiensPage() {
                   <Clock className="w-4 h-4 text-indigo-900 flex-shrink-0" />
                   <span>
                     <strong>Vendredi</strong> 19h00 - 20h30
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-700 text-sm">
-                  <Clock className="w-4 h-4 text-red-700 flex-shrink-0" />
-                  <span>
-                    <strong>Samedi</strong> 19h00 - 20h15{' '}
-                    <span className="text-red-700 font-medium">(Prépa Kumite)</span>
                   </span>
                 </div>
               </div>

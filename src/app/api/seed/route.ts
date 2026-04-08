@@ -269,7 +269,7 @@ export async function POST() {
           trialText: '2 cours d\'essai gratuits !',
           trialDescription: 'Venez découvrir nos disciplines sans engagement. Prévoyez une tenue de sport et de l\'eau.',
         },
-        scheduleNote: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau. Reprise des cours : 16 septembre 2025.',
+        scheduleNote: '',
       },
     })
     results.push('Homepage global initialisée')

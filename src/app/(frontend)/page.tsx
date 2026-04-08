@@ -129,14 +129,14 @@ const DEFAULTS = {
     trialText: '2 cours d\'essai gratuits !',
     trialDescription: 'Venez découvrir nos disciplines sans engagement. Prévoyez une tenue de sport et de l\'eau.',
   },
-  scheduleNote: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau. Reprise des cours : 16 septembre 2025.',
+  scheduleNote: '',
   schedule: [
     { day: 'Lundi', courses: [{ time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
     { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
-    { day: 'Mercredi', courses: [{ time: '15h00 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans) · Dès septembre 2026', location: '24 rue des Cordeliers', color: 'indigo' }, { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }] },
+    { day: 'Mercredi', courses: [{ time: '15h00 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans) · Dès septembre 2026', location: '24 rue des Cordeliers', color: 'indigo', disabled: true }, { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }] },
     { day: 'Jeudi', courses: [{ time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
     { day: 'Vendredi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
-    { day: 'Samedi', courses: [{ time: '19h00 - 20h15', name: 'Prépa Physique Kumite', location: '24 rue des Cordeliers', color: 'orange' }] },
+    { day: 'Samedi', courses: [] },
     { day: 'Dimanche', courses: [{ time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' }] },
   ],
   dojo: {
@@ -458,6 +458,7 @@ export default async function OnamiDojoHome() {
                   <div className="p-4 space-y-3">
                     {day.courses.map((course, i) => (
                       <div key={i} className={`p-3 rounded-sm ${
+                        course.disabled ? 'bg-gray-100 border-l-4 border-gray-300 opacity-60' :
                         course.color === 'red' ? 'bg-red-50 border-l-4 border-red-600' :
                         course.color === 'slate' ? 'bg-slate-100 border-l-4 border-slate-700' :
                         course.color === 'purple' ? 'bg-purple-50 border-l-4 border-purple-600' :
@@ -465,9 +466,9 @@ export default async function OnamiDojoHome() {
                         course.color === 'orange' ? 'bg-orange-50 border-l-4 border-orange-600' :
                         'bg-indigo-50 border-l-4 border-indigo-600'
                       }`}>
-                        <p className="text-xs font-bold text-slate-500 mb-1">{course.time}</p>
-                        <p className="font-bold text-slate-800 text-sm leading-tight">{course.name}</p>
-                        <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+                        <p className={`text-xs font-bold mb-1 ${course.disabled ? 'text-gray-400' : 'text-slate-500'}`}>{course.time}</p>
+                        <p className={`font-bold text-sm leading-tight ${course.disabled ? 'text-gray-400' : 'text-slate-800'}`}>{course.name}</p>
+                        <p className={`text-xs mt-1 flex items-center gap-1 ${course.disabled ? 'text-gray-400' : 'text-slate-500'}`}>
                           <MapPin className="w-3 h-3" /> {course.location}
                         </p>
                       </div>
@@ -487,6 +488,7 @@ export default async function OnamiDojoHome() {
                   <div className="p-4 space-y-4 min-h-[180px]">
                     {day.courses.map((course, i) => (
                       <div key={i} className={`p-3 rounded-sm ${
+                        course.disabled ? 'bg-gray-100 border-l-4 border-gray-300 opacity-60' :
                         course.color === 'red' ? 'bg-red-50 border-l-4 border-red-600' :
                         course.color === 'slate' ? 'bg-slate-100 border-l-4 border-slate-700' :
                         course.color === 'purple' ? 'bg-purple-50 border-l-4 border-purple-600' :
@@ -494,9 +496,9 @@ export default async function OnamiDojoHome() {
                         course.color === 'orange' ? 'bg-orange-50 border-l-4 border-orange-600' :
                         'bg-indigo-50 border-l-4 border-indigo-600'
                       }`}>
-                        <p className="text-xs font-bold text-slate-500 mb-1">{course.time}</p>
-                        <p className="font-bold text-slate-800 text-sm leading-tight">{course.name}</p>
-                        <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+                        <p className={`text-xs font-bold mb-1 ${course.disabled ? 'text-gray-400' : 'text-slate-500'}`}>{course.time}</p>
+                        <p className={`font-bold text-sm leading-tight ${course.disabled ? 'text-gray-400' : 'text-slate-800'}`}>{course.name}</p>
+                        <p className={`text-xs mt-1 flex items-center gap-1 ${course.disabled ? 'text-gray-400' : 'text-slate-500'}`}>
                           <MapPin className="w-3 h-3" /> {course.location}
                         </p>
                       </div>
@@ -506,12 +508,14 @@ export default async function OnamiDojoHome() {
               ))}
             </div>
 
+            {homepage.scheduleNote && (
             <div className="mt-8 p-4 bg-indigo-50 border-l-4 border-indigo-900 text-sm text-indigo-900 flex items-start gap-3">
               <Clock className="w-5 h-5 flex-shrink-0 mt-0.5" />
               <div>
                 <strong>Note :</strong> {homepage.scheduleNote}
               </div>
             </div>
+            )}
           </div>
 
           {/* Download Section */}
