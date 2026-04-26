@@ -13,6 +13,7 @@ import {
   BookOpen,
   ExternalLink,
   Youtube,
+  Instagram,
 } from 'lucide-react';
 
 export const revalidate = 300;
@@ -103,6 +104,13 @@ const CURRICULUM = [
     title: 'Philosophie du Budō',
     description: 'Esprit martial, respect du Bushido, discipline mentale et dépassement de soi.',
   },
+];
+
+const INSTAGRAM_POSTS = [
+  'DXlbRGhiq8H',
+  'DWLrpGjCjDU',
+  'DWUC04VDJ5g',
+  'DVhDxZyjG7R',
 ];
 
 // --- Page Component ---
@@ -434,6 +442,54 @@ export default function KyokushinKarateAmiensPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* La vie du club — Instagram */}
+      <section className="py-24 relative overflow-hidden border-t border-slate-200">
+        <SeigaihaPattern />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <SectionHeading
+            title="La vie du club"
+            subtitle="Suivez-nous sur Instagram"
+            japanese="道場便り"
+          />
+
+          <p className="text-slate-700 text-base md:text-lg max-w-2xl mt-6 mb-12 leading-relaxed">
+            Stages, compétitions, entraînements... Découvrez les derniers
+            moments forts de la communauté WKB Amiens.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {INSTAGRAM_POSTS.map((shortcode) => (
+              <div
+                key={shortcode}
+                className="bg-white border border-slate-200 shadow-sm overflow-hidden"
+              >
+                <iframe
+                  src={`https://www.instagram.com/p/${shortcode}/embed`}
+                  className="w-full block"
+                  style={{ height: '750px', border: 0 }}
+                  scrolling="no"
+                  allow="encrypted-media"
+                  loading="lazy"
+                  title={`Publication Instagram ${shortcode}`}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <a
+              href="https://www.instagram.com/wkb_amiens_karatekyokushin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-950 text-white font-bold rounded-sm hover:bg-indigo-900 transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+              Suivre @wkb_amiens_karatekyokushin
+            </a>
           </div>
         </div>
       </section>
