@@ -15,6 +15,7 @@ import {
   Youtube,
   Instagram,
 } from 'lucide-react';
+import InstagramEmbedGrid from './InstagramEmbedGrid';
 
 export const revalidate = 300;
 
@@ -104,13 +105,6 @@ const CURRICULUM = [
     title: 'Philosophie du Budō',
     description: 'Esprit martial, respect du Bushido, discipline mentale et dépassement de soi.',
   },
-];
-
-const INSTAGRAM_POSTS = [
-  'DXlbRGhiq8H',
-  'DWLrpGjCjDU',
-  'DWUC04VDJ5g',
-  'DVhDxZyjG7R',
 ];
 
 // --- Page Component ---
@@ -461,24 +455,7 @@ export default function KyokushinKarateAmiensPage() {
             moments forts de la communauté WKB Amiens.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {INSTAGRAM_POSTS.map((shortcode) => (
-              <div
-                key={shortcode}
-                className="bg-white border border-slate-200 shadow-sm overflow-hidden"
-              >
-                <iframe
-                  src={`https://www.instagram.com/p/${shortcode}/embed`}
-                  className="w-full block"
-                  style={{ height: '750px', border: 0 }}
-                  scrolling="no"
-                  allow="encrypted-media"
-                  loading="lazy"
-                  title={`Publication Instagram ${shortcode}`}
-                />
-              </div>
-            ))}
-          </div>
+          <InstagramEmbedGrid />
 
           <div className="mt-12 text-center">
             <a
