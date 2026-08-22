@@ -28,7 +28,7 @@ export const TeamMembers: CollectionConfig = {
       label: 'Fonction',
       required: true,
       admin: {
-        description: 'Ex: Directeur Technique - Kempo, Responsable Kyokushin...',
+        description: 'Ex: Directeur Technique - Kempo Karaté, Responsable Kyokushin...',
       },
     },
     {
@@ -36,7 +36,7 @@ export const TeamMembers: CollectionConfig = {
       type: 'select',
       label: 'Discipline principale',
       options: [
-        { label: 'Kempo', value: 'kempo' },
+        { label: 'Kempo Karaté', value: 'kempo' },
         { label: 'Kyokushin', value: 'kyokushin' },
       ],
       admin: {

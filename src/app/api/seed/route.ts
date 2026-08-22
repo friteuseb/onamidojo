@@ -143,7 +143,7 @@ export async function POST() {
   const instructors = [
     {
       name: 'Senseï Olivier Leclercq',
-      role: 'Directeur Technique - Kempo',
+      role: 'Directeur Technique - Kempo Karaté',
       discipline: 'kempo',
       rank: '3ème Dan',
       achievements: [
@@ -171,7 +171,7 @@ export async function POST() {
     },
     {
       name: 'Senseï Marc Yeu',
-      role: 'Instructeur Kempo',
+      role: 'Instructeur Kempo Karaté',
       discipline: 'kempo',
       rank: '2ème Dan',
       achievements: [
@@ -185,7 +185,7 @@ export async function POST() {
     },
     {
       name: 'Senseï Anibal Barreira',
-      role: 'Instructeur Kempo',
+      role: 'Instructeur Kempo Karaté',
       discipline: 'kempo',
       rank: '1er Dan',
       achievements: [

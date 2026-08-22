@@ -326,7 +326,7 @@ export const Homepage: GlobalConfig = {
                 {
                   day: 'Lundi',
                   courses: [
-                    { time: '19h30 - 22h00', name: 'Kempo Adultes', location: '24 rue des Cordeliers', color: 'red' },
+                    { time: '19h30 - 22h00', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' },
                   ],
                 },
                 {
@@ -339,21 +339,21 @@ export const Homepage: GlobalConfig = {
                   day: 'Mercredi',
                   courses: [
                     { time: '15h00 - 16h30', name: 'Kyokushin Enfants (dès 5 ans)', location: '24 rue des Cordeliers', color: 'indigo' },
-                    { time: '17h00 - 18h15', name: 'Kempo Enfants (jusqu\'à 12 ans)', location: '24 rue des Cordeliers', color: 'purple' },
-                    { time: '18h30 - 20h00', name: 'Kempo Ados', location: '24 rue des Cordeliers', color: 'blue' },
+                    { time: '17h00 - 18h15', name: 'Kempo Karaté Enfants (jusqu\'à 12 ans)', location: '24 rue des Cordeliers', color: 'purple' },
+                    { time: '18h30 - 20h00', name: 'Kempo Karaté Ados', location: '24 rue des Cordeliers', color: 'blue' },
                   ],
                 },
                 {
                   day: 'Jeudi',
                   courses: [
                     { time: '19h00 - 20h30', name: 'Kyokushin Adultes', location: '24 rue des Cordeliers', color: 'slate' },
-                    { time: '20h30 - 22h30', name: 'Kempo Adultes', location: '24 rue des Cordeliers', color: 'red' },
+                    { time: '20h30 - 22h30', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' },
                   ],
                 },
                 {
                   day: 'Vendredi',
                   courses: [
-                    { time: '18h00 - 19h00', name: 'Kempo Combat au sol — Ados & Adultes', location: '24 rue des Cordeliers', color: 'orange' },
+                    { time: '18h00 - 19h00', name: 'Kempo Karaté — Combat au sol (Ados & Adultes)', location: '24 rue des Cordeliers', color: 'orange' },
                   ],
                 },
                 {
@@ -363,7 +363,7 @@ export const Homepage: GlobalConfig = {
                 {
                   day: 'Dimanche',
                   courses: [
-                    { time: '10h00 - 11h30', name: 'Kempo Tous publics', location: '24 rue des Cordeliers', color: 'indigo' },
+                    { time: '10h00 - 11h30', name: 'Kempo Karaté Tous publics', location: '24 rue des Cordeliers', color: 'indigo' },
                   ],
                 },
               ],
