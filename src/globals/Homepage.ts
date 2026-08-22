@@ -29,7 +29,7 @@ export const Homepage: GlobalConfig = {
                   name: 'badge',
                   type: 'text',
                   label: 'Badge (texte du bandeau)',
-                  defaultValue: 'Inscriptions ouvertes 2025-2026',
+                  defaultValue: 'Inscriptions ouvertes 2026-2027',
                   admin: {
                     description: 'Petit texte mis en avant au-dessus du titre (ex: annonce de rentrée)',
                   },

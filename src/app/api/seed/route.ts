@@ -221,7 +221,7 @@ export async function POST() {
       slug: 'homepage',
       data: {
         hero: {
-          badge: 'Inscriptions ouvertes 2025-2026',
+          badge: 'Inscriptions ouvertes 2026-2027',
           subtitle: 'L\'Art du Karaté Traditionnel à Amiens',
           baseline: 'Découvrez la puissance du Kyokushin et la polyvalence du Kempo dans un environnement dédié à l\'excellence, au respect et au dépassement de soi.',
           ctaPrimary: 'Découvrir nos cours',
