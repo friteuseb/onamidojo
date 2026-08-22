@@ -233,8 +233,8 @@ export default function KyokushinKarateAmiensPage() {
                     <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900">
                       Enfants
                     </h3>
-                    <span className="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-xs font-bold uppercase tracking-widest rounded-sm">
-                      Dès septembre 2026
+                    <span className="px-2 py-0.5 bg-red-100 text-red-800 text-xs font-bold uppercase tracking-widest rounded-sm">
+                      Nouveau
                     </span>
                   </div>
                   <p className="text-indigo-600 font-medium text-sm">À partir de 5 ans</p>
@@ -246,10 +246,10 @@ export default function KyokushinKarateAmiensPage() {
                 Des cours adaptés à leur âge, dans une ambiance bienveillante et structurée.
               </p>
               <div className="space-y-3 border-t border-slate-100 pt-6">
-                <div className="flex items-center gap-3 text-gray-400 text-sm opacity-60">
-                  <Clock className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Clock className="w-4 h-4 text-indigo-900 flex-shrink-0" />
                   <span>
-                    <strong>Mercredi</strong> 15h00 - 16h30 <span className="text-xs">(dès septembre 2026)</span>
+                    <strong>Mercredi</strong> 15h00 - 16h30
                   </span>
                 </div>
               </div>
@@ -283,7 +283,7 @@ export default function KyokushinKarateAmiensPage() {
                 <div className="flex items-center gap-3 text-slate-700 text-sm">
                   <Clock className="w-4 h-4 text-indigo-900 flex-shrink-0" />
                   <span>
-                    <strong>Vendredi</strong> 19h00 - 20h30
+                    <strong>Jeudi</strong> 19h00 - 20h30
                   </span>
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function KyokushinKarateAmiensPage() {
                 <div className="flex items-center gap-3 text-slate-700 text-sm">
                   <Clock className="w-4 h-4 text-indigo-900 flex-shrink-0" />
                   <span>
-                    <strong>Vendredi</strong> 19h00 - 20h30
+                    <strong>Jeudi</strong> 19h00 - 20h30
                   </span>
                 </div>
               </div>

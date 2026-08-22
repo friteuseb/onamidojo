@@ -78,6 +78,19 @@ interface TeamMember {
   photoPath?: string | null
 }
 
+type ScheduleCourse = {
+  time: string
+  name: string
+  location: string
+  color: string
+  disabled?: boolean
+}
+
+type ScheduleDay = {
+  day: string
+  courses: ScheduleCourse[]
+}
+
 // --- Defaults (fallback si la global n'est pas encore initialisée) ---
 const DEFAULTS = {
   hero: {
@@ -131,14 +144,14 @@ const DEFAULTS = {
   },
   scheduleNote: '',
   schedule: [
-    { day: 'Lundi', courses: [{ time: '19h30 - 21h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
-    { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
-    { day: 'Mercredi', courses: [{ time: '15h00 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans) · Dès septembre 2026', location: '24 rue des Cordeliers', color: 'indigo', disabled: true }, { time: '16h45 - 18h15', name: 'Kempo Enfants - Groupe 1 (petits)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Enfants - Groupe 2 (grands & gradés)', location: '24 rue des Cordeliers', color: 'blue' }] },
-    { day: 'Jeudi', courses: [{ time: '20h30 - 22h00', name: 'Kempo Adultes & Ados', location: '24 rue des Cordeliers', color: 'red' }] },
-    { day: 'Vendredi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes & Ados', location: '24 rue des Cordeliers', color: 'slate' }] },
+    { day: 'Lundi', courses: [{ time: '19h30 - 22h00', name: 'Kempo Adultes', location: '24 rue des Cordeliers', color: 'red' }] },
+    { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes', location: '24 rue des Cordeliers', color: 'slate' }] },
+    { day: 'Mercredi', courses: [{ time: '15h00 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans)', location: '24 rue des Cordeliers', color: 'indigo' }, { time: '17h00 - 18h15', name: 'Kempo Enfants (jusqu\'à 12 ans)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Ados', location: '24 rue des Cordeliers', color: 'blue' }] },
+    { day: 'Jeudi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes', location: '24 rue des Cordeliers', color: 'slate' }, { time: '20h30 - 22h30', name: 'Kempo Adultes', location: '24 rue des Cordeliers', color: 'red' }] },
+    { day: 'Vendredi', courses: [{ time: '18h00 - 19h00', name: 'Kempo Combat au sol — Ados & Adultes', location: '24 rue des Cordeliers', color: 'orange' }] },
     { day: 'Samedi', courses: [] },
-    { day: 'Dimanche', courses: [{ time: '10h00 - 11h30', name: 'Kempo Enfants & Ados', location: '24 rue des Cordeliers', color: 'indigo' }] },
-  ],
+    { day: 'Dimanche', courses: [{ time: '10h00 - 11h30', name: 'Kempo Tous publics', location: '24 rue des Cordeliers', color: 'indigo' }] },
+  ] as ScheduleDay[],
   dojo: {
     address: '24 rue des Cordeliers',
     city: '80000 Amiens',

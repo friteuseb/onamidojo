@@ -74,13 +74,12 @@ const SectionHeading = ({
 const AUDIENCE_CARDS = [
   {
     icon: <Star className="w-8 h-8" />,
-    title: 'Enfants (6-13 ans)',
+    title: 'Enfants (jusqu\'à 12 ans)',
     color: 'bg-purple-50 border-purple-200',
     iconColor: 'text-purple-600',
     schedule: [
-      { day: 'Mercredi', time: '16h45 - 18h15', detail: 'Groupe 1 (petits)' },
-      { day: 'Mercredi', time: '18h30 - 20h00', detail: 'Groupe 2 (grands & gradés)' },
-      { day: 'Dimanche', time: '10h00 - 11h30', detail: 'Enfants & Ados' },
+      { day: 'Mercredi', time: '17h00 - 18h15', detail: 'Cours Enfants' },
+      { day: 'Dimanche', time: '10h00 - 11h30', detail: 'Cours tous publics' },
     ],
     description:
       'Développement de la motricité, de la discipline et de la confiance en soi dans un cadre bienveillant et structuré. Les enfants apprennent les bases du Kempo tout en s\'amusant.',
@@ -91,8 +90,9 @@ const AUDIENCE_CARDS = [
     color: 'bg-blue-50 border-blue-200',
     iconColor: 'text-blue-600',
     schedule: [
-      { day: 'Lundi', time: '19h30 - 21h00', detail: 'Adultes & Ados' },
-      { day: 'Jeudi', time: '20h30 - 22h00', detail: 'Adultes & Ados' },
+      { day: 'Mercredi', time: '18h30 - 20h00', detail: 'Cours Ados' },
+      { day: 'Vendredi', time: '18h00 - 19h00', detail: 'Combat au sol (ados & adultes)' },
+      { day: 'Dimanche', time: '10h00 - 11h30', detail: 'Cours tous publics' },
     ],
     description:
       'Canaliser l\'énergie, se dépasser et apprendre la self-défense. Le Kempo offre aux adolescents un cadre exigeant pour développer leur mental et leur condition physique.',
@@ -103,8 +103,10 @@ const AUDIENCE_CARDS = [
     color: 'bg-red-50 border-red-200',
     iconColor: 'text-red-600',
     schedule: [
-      { day: 'Lundi', time: '19h30 - 21h00', detail: 'Adultes & Ados' },
-      { day: 'Jeudi', time: '20h30 - 22h00', detail: 'Adultes & Ados' },
+      { day: 'Lundi', time: '19h30 - 22h00', detail: 'Cours Adultes' },
+      { day: 'Jeudi', time: '20h30 - 22h30', detail: 'Cours Adultes' },
+      { day: 'Vendredi', time: '18h00 - 19h00', detail: 'Combat au sol (ados & adultes)' },
+      { day: 'Dimanche', time: '10h00 - 11h30', detail: 'Cours tous publics' },
     ],
     description:
       'Remise en forme, self-défense et compétition pour ceux qui le souhaitent. Que vous soyez débutant ou confirmé, le Kempo vous permettra de progresser à votre rythme.',
