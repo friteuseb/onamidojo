@@ -32,6 +32,7 @@ export default function Header() {
             </div>
             <Link href="/#instructeurs" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Instructeurs</Link>
             <Link href="/#horaires" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Horaires</Link>
+            <Link href="/#tarifs" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Tarifs</Link>
             <Link href="/#dojos" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Notre Dojo</Link>
             <Link href="/blog" className="text-slate-600 hover:text-indigo-900 transition-colors font-medium">Blog</Link>
             <Link href="/#contact" className="bg-indigo-950 text-white px-6 py-2.5 rounded-sm font-bold hover:bg-red-700 transition-all duration-300 shadow-md">
@@ -58,6 +59,7 @@ export default function Header() {
             <Link href="/kyokushin-karate-amiens" className="block py-2 pl-4 text-sm text-slate-500 hover:text-red-700" onClick={() => setMobileMenuOpen(false)}>→ Kyokushinkai</Link>
             <Link href="/#instructeurs" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Instructeurs</Link>
             <Link href="/#horaires" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Horaires</Link>
+            <Link href="/#tarifs" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Tarifs</Link>
             <Link href="/#dojos" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Notre Dojo</Link>
             <Link href="/blog" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
             <Link href="/#contact" className="block py-3 bg-indigo-950 text-white text-center font-bold rounded-sm" onClick={() => setMobileMenuOpen(false)}>

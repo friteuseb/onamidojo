@@ -249,7 +249,7 @@ export default function KyokushinKarateAmiensPage() {
                 <div className="flex items-center gap-3 text-slate-700 text-sm">
                   <Clock className="w-4 h-4 text-indigo-900 flex-shrink-0" />
                   <span>
-                    <strong>Mercredi</strong> 15h00 - 16h30
+                    <strong>Mercredi</strong> 15h30 - 16h30
                   </span>
                 </div>
               </div>

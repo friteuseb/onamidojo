@@ -326,7 +326,7 @@ export const Homepage: GlobalConfig = {
                 {
                   day: 'Lundi',
                   courses: [
-                    { time: '19h30 - 22h00', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' },
+                    { time: '19h30 - 21h00', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' },
                   ],
                 },
                 {
@@ -338,7 +338,7 @@ export const Homepage: GlobalConfig = {
                 {
                   day: 'Mercredi',
                   courses: [
-                    { time: '15h00 - 16h30', name: 'Kyokushin Enfants (dès 5 ans)', location: '24 rue des Cordeliers', color: 'indigo' },
+                    { time: '15h30 - 16h30', name: 'Kyokushin Enfants (dès 5 ans)', location: '24 rue des Cordeliers', color: 'indigo' },
                     { time: '17h00 - 18h15', name: 'Kempo Karaté Enfants (jusqu\'à 12 ans)', location: '24 rue des Cordeliers', color: 'purple' },
                     { time: '18h30 - 20h00', name: 'Kempo Karaté Ados', location: '24 rue des Cordeliers', color: 'blue' },
                   ],
@@ -352,9 +352,7 @@ export const Homepage: GlobalConfig = {
                 },
                 {
                   day: 'Vendredi',
-                  courses: [
-                    { time: '18h00 - 19h00', name: 'Kempo Karaté — Combat au sol (Ados & Adultes)', location: '24 rue des Cordeliers', color: 'orange' },
-                  ],
+                  courses: [],
                 },
                 {
                   day: 'Samedi',
@@ -372,7 +370,7 @@ export const Homepage: GlobalConfig = {
               name: 'scheduleNote',
               type: 'textarea',
               label: 'Note planning',
-              defaultValue: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau. Reprise des cours : 16 septembre 2025.',
+              defaultValue: 'Les cours du samedi sont sur autorisation selon l\'assiduité et le niveau.',
               admin: {
                 description: 'Note affichée sous le planning des cours (informations complémentaires, dates de reprise, etc.)',
               },
@@ -473,8 +471,8 @@ export const Homepage: GlobalConfig = {
                 },
               ],
               defaultValue: [
-                { title: 'Licence FFK', description: 'Demande de licence 2025/2026', file: '/documents/licence-ffk-2025-2026.pdf' },
-                { title: 'Inscription Onami', description: 'Formulaire d\'inscription club', file: '/documents/inscription-onami-2025-2026.pdf' },
+                { title: 'Licence FFKDA', description: 'Kempo · 2026/2027', file: '/documents/licence-ffkda-2026-2027.pdf' },
+                { title: 'Inscription Onami', description: 'Saison 2026/2027', file: '/documents/inscription-onami-2026-2027.pdf' },
                 { title: 'Équipements', description: 'Catalogue protections & dogis', file: '/documents/equipements-protection-onami.pdf' },
                 { title: 'Broderies', description: 'Personnalisations & broderies', file: '/documents/personnalisations-broderies-onami.pdf' },
               ],

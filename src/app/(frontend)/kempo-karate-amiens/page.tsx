@@ -91,7 +91,6 @@ const AUDIENCE_CARDS = [
     iconColor: 'text-blue-600',
     schedule: [
       { day: 'Mercredi', time: '18h30 - 20h00', detail: 'Cours Ados' },
-      { day: 'Vendredi', time: '18h00 - 19h00', detail: 'Combat au sol (ados & adultes)' },
       { day: 'Dimanche', time: '10h00 - 11h30', detail: 'Cours tous publics' },
     ],
     description:
@@ -103,9 +102,8 @@ const AUDIENCE_CARDS = [
     color: 'bg-red-50 border-red-200',
     iconColor: 'text-red-600',
     schedule: [
-      { day: 'Lundi', time: '19h30 - 22h00', detail: 'Cours Adultes' },
+      { day: 'Lundi', time: '19h30 - 21h00', detail: 'Cours Adultes' },
       { day: 'Jeudi', time: '20h30 - 22h30', detail: 'Cours Adultes' },
-      { day: 'Vendredi', time: '18h00 - 19h00', detail: 'Combat au sol (ados & adultes)' },
       { day: 'Dimanche', time: '10h00 - 11h30', detail: 'Cours tous publics' },
     ],
     description:

@@ -10,7 +10,12 @@ import {
   Flame,
   Phone,
   Mail,
-  Download
+  Download,
+  CalendarCheck,
+  FileText,
+  CreditCard,
+  Stethoscope,
+  Shirt
 } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import { getPosts, getTeamMembers, getHomepage } from '@/lib/payload-helpers';
@@ -144,11 +149,11 @@ const DEFAULTS = {
   },
   scheduleNote: '',
   schedule: [
-    { day: 'Lundi', courses: [{ time: '19h30 - 22h00', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' }] },
+    { day: 'Lundi', courses: [{ time: '19h30 - 21h00', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' }] },
     { day: 'Mardi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes', location: '24 rue des Cordeliers', color: 'slate' }] },
-    { day: 'Mercredi', courses: [{ time: '15h00 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans)', location: '24 rue des Cordeliers', color: 'indigo' }, { time: '17h00 - 18h15', name: 'Kempo Karaté Enfants (jusqu\'à 12 ans)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Karaté Ados', location: '24 rue des Cordeliers', color: 'blue' }] },
+    { day: 'Mercredi', courses: [{ time: '15h30 - 16h30', name: 'Karaté Kyokushinkai Enfants (dès 5 ans)', location: '24 rue des Cordeliers', color: 'indigo' }, { time: '17h00 - 18h15', name: 'Kempo Karaté Enfants (jusqu\'à 12 ans)', location: '24 rue des Cordeliers', color: 'purple' }, { time: '18h30 - 20h00', name: 'Kempo Karaté Ados', location: '24 rue des Cordeliers', color: 'blue' }] },
     { day: 'Jeudi', courses: [{ time: '19h00 - 20h30', name: 'Karaté Kyokushinkai Adultes', location: '24 rue des Cordeliers', color: 'slate' }, { time: '20h30 - 22h30', name: 'Kempo Karaté Adultes', location: '24 rue des Cordeliers', color: 'red' }] },
-    { day: 'Vendredi', courses: [{ time: '18h00 - 19h00', name: 'Kempo Karaté — Combat au sol (Ados & Adultes)', location: '24 rue des Cordeliers', color: 'orange' }] },
+    { day: 'Vendredi', courses: [] },
     { day: 'Samedi', courses: [] },
     { day: 'Dimanche', courses: [{ time: '10h00 - 11h30', name: 'Kempo Karaté Tous publics', location: '24 rue des Cordeliers', color: 'indigo' }] },
   ] as ScheduleDay[],
@@ -160,12 +165,84 @@ const DEFAULTS = {
     email: 'onamidojo@yahoo.com',
   },
   documents: [
-    { title: "Licence FFK", description: "Demande de licence 2025/2026", file: "/documents/licence-ffk-2025-2026.pdf" },
-    { title: "Inscription Onami", description: "Formulaire d'inscription club", file: "/documents/inscription-onami-2025-2026.pdf" },
+    { title: "Licence FFKDA", description: "Kempo · 2026/2027", file: "/documents/licence-ffkda-2026-2027.pdf" },
+    { title: "Inscription Onami", description: "Saison 2026/2027", file: "/documents/inscription-onami-2026-2027.pdf" },
     { title: "Équipements", description: "Catalogue protections & dogis", file: "/documents/equipements-protection-onami.pdf" },
     { title: "Broderies", description: "Personnalisations & broderies", file: "/documents/personnalisations-broderies-onami.pdf" },
   ],
 };
+
+// --- Rentrée 2026-2027 (bandeau temporaire, à retirer courant septembre) ---
+const RENTREE = {
+  title: 'C\'est la rentrée !',
+  intro: 'Reprise des cours pour la saison 2026-2027 :',
+  dates: [
+    { course: 'Kempo Karaté — Adultes / Ados', date: 'Lundi 31 août', teacher: 'avec Senseï Olivier' },
+    { course: 'Kempo Karaté — Enfants / Ados', date: 'Mercredi 2 septembre', teacher: 'avec Senseï Olivier' },
+    { course: 'Karaté Kyokushin — Adultes / Ados', date: 'Jeudi 3 septembre', teacher: 'avec Senseï Xavier' },
+  ],
+};
+
+// --- Tarifs saison 2026-2027 ---
+const TARIFS = [
+  {
+    discipline: 'Kempo Karaté',
+    audience: 'Adultes / Ados',
+    price: '180 €',
+    extras: ['Licence FFKDA incluse (≈ 37 €)'],
+    color: 'red',
+  },
+  {
+    discipline: 'Kempo Karaté',
+    audience: 'Enfants / Ados',
+    price: '150 €',
+    extras: [],
+    color: 'purple',
+  },
+  {
+    discipline: 'Karaté Kyokushin',
+    audience: 'Adultes / Ados',
+    price: '180 €',
+    extras: ['+ 25 € passeport WKB (valable à vie)', '+ 15 € licence WKB France (annuelle)'],
+    color: 'slate',
+  },
+  {
+    discipline: 'Karaté Kyokushin',
+    audience: 'Enfants',
+    price: '150 €',
+    extras: ['+ 25 € passeport WKB (valable à vie)', '+ 15 € licence WKB France (annuelle)'],
+    color: 'indigo',
+  },
+];
+
+const TARIF_COMBINE = {
+  label: 'Formule Kempo Karaté + Karaté Kyokushin',
+  price: '220 €',
+  extras: '+ 25 € passeport WKB (valable à vie) + 15 € licence WKB France (annuelle)',
+};
+
+const MODALITES = [
+  {
+    icon: 'file',
+    title: 'Documents à retourner',
+    text: 'Le formulaire d\'inscription 2026-2027 et, pour les pratiquants de Kempo Karaté, la demande de licence FFKDA — complétés et signés, à rapporter au dojo ou à nous renvoyer au plus vite.',
+  },
+  {
+    icon: 'stethoscope',
+    title: 'Certificat médical',
+    text: 'Un certificat médical d\'aptitude à la pratique du karaté en plein contact est demandé aux membres souhaitant participer aux compétitions.',
+  },
+  {
+    icon: 'card',
+    title: 'Règlement',
+    text: 'En espèces, en 1, 2 ou 3 chèques (tous remis à l\'inscription et encaissés avant le 31/12/2026) ou par virement bancaire — le RIB du club figure sur le formulaire d\'inscription.',
+  },
+  {
+    icon: 'shirt',
+    title: 'Équipements',
+    text: 'Dogis, protections, gants et tee-shirts sont disponibles au dojo. Remettez votre demande accompagnée du règlement à votre professeur avant la remise des produits.',
+  },
+];
 
 const DEFAULT_INSTRUCTORS: TeamMember[] = [
   { name: "Senseï Olivier Leclercq", role: "Directeur Technique - Kempo Karaté", rank: "3ème Dan", achievements: [{ label: "3ème Dan FFKDA" }, { label: "1er Dan Kyokushin WKB" }, { label: "3ème au Championnat du Monde WKB" }, { label: "5x Podium Européen" }, { label: "Vice-Champion d'Europe 2023 & 2024" }], photoPath: "/images/instructors/olivier.png" },
@@ -295,6 +372,38 @@ export default async function OnamiDojoHome() {
           </p>
         </div>
       </header>
+
+      {/* Bandeau Rentrée (temporaire — saison 2026-2027) */}
+      <section aria-labelledby="rentree-title" className="bg-red-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+          <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+            <div className="flex items-center gap-3 md:flex-shrink-0">
+              <CalendarCheck className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h2 id="rentree-title" className="text-2xl md:text-3xl font-serif font-bold leading-tight">
+                  {RENTREE.title}
+                </h2>
+                <p className="text-red-100 text-sm">{RENTREE.intro}</p>
+              </div>
+            </div>
+            <ul className="grid sm:grid-cols-3 gap-4 flex-1 w-full">
+              {RENTREE.dates.map((d, idx) => (
+                <li key={idx} className="bg-red-800/60 border border-red-500/40 rounded-sm px-4 py-3 flex flex-col">
+                  <p className="font-bold text-sm leading-tight">{d.course}</p>
+                  <p className="text-white font-serif text-lg mt-1 leading-tight">{d.date}</p>
+                  <p className="text-red-100 text-xs mt-auto pt-1">{d.teacher}</p>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="#tarifs"
+              className="md:flex-shrink-0 inline-flex items-center justify-center gap-2 bg-white text-red-700 px-6 py-3 rounded-sm font-bold hover:bg-red-50 transition-colors"
+            >
+              S&apos;inscrire <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Introduction Styles Section */}
       <section id="disciplines" className="py-24 relative overflow-hidden">
@@ -531,7 +640,74 @@ export default async function OnamiDojoHome() {
             )}
           </div>
 
-          {/* Download Section */}
+        </div>
+      </section>
+
+      {/* Tarifs & Inscription Section */}
+      <section id="tarifs" className="py-24 relative overflow-hidden">
+        <SeigaihaPattern />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <SectionHeading
+            title="Tarifs & Inscription"
+            subtitle="Saison 2026-2027"
+            japanese="入会"
+          />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12">
+            {TARIFS.map((t, idx) => (
+              <div
+                key={idx}
+                className={`bg-white border-t-4 border border-slate-200 p-6 flex flex-col hover:shadow-xl transition-all ${
+                  t.color === 'red' ? 'border-t-red-600' :
+                  t.color === 'purple' ? 'border-t-purple-600' :
+                  t.color === 'slate' ? 'border-t-slate-700' :
+                  'border-t-indigo-600'
+                }`}
+              >
+                <p className="font-serif font-bold text-lg text-slate-900 leading-tight">{t.discipline}</p>
+                <p className="text-red-700 text-sm font-medium mt-1">{t.audience}</p>
+                <div className="h-[1px] w-12 bg-slate-200 my-4"></div>
+                <p className="text-4xl font-serif font-bold text-slate-900">{t.price}</p>
+                <p className="text-xs text-slate-500 mt-1">cotisation annuelle club</p>
+                {t.extras.length > 0 && (
+                  <ul className="mt-4 space-y-1 text-sm text-slate-600">
+                    {t.extras.map((extra, i) => (
+                      <li key={i}>{extra}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 bg-indigo-950 text-white p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div className="flex-1">
+              <p className="font-serif font-bold text-xl">{TARIF_COMBINE.label}</p>
+              <p className="text-indigo-200 text-sm mt-1">{TARIF_COMBINE.extras}</p>
+            </div>
+            <p className="text-4xl md:text-5xl font-serif font-bold text-white md:text-right">
+              {TARIF_COMBINE.price}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 mt-12">
+            {MODALITES.map((m, idx) => (
+              <div key={idx} className="bg-white border border-slate-200 p-6 flex items-start gap-4">
+                <div className="w-11 h-11 bg-red-50 text-red-700 flex items-center justify-center rounded-sm flex-shrink-0">
+                  {m.icon === 'file' ? <FileText className="w-5 h-5" /> :
+                   m.icon === 'stethoscope' ? <Stethoscope className="w-5 h-5" /> :
+                   m.icon === 'card' ? <CreditCard className="w-5 h-5" /> :
+                   <Shirt className="w-5 h-5" />}
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">{m.title}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">{m.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Documents à télécharger */}
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {documents.map((doc, idx) => (
               <a
@@ -551,6 +727,16 @@ export default async function OnamiDojoHome() {
                 </div>
               </a>
             ))}
+          </div>
+          <div className="mt-8 p-4 bg-indigo-50 border-l-4 border-indigo-900 text-sm text-indigo-900 flex items-start gap-3">
+            <Clock className="w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <div>
+              <strong>Une question sur l&apos;inscription&nbsp;?</strong>{' '}
+              Contactez-nous au{' '}
+              <a href={`tel:${dojo.phoneLink}`} className="font-bold underline hover:text-red-700">{dojo.phone}</a>
+              {' '}ou par email à{' '}
+              <a href={`mailto:${dojo.email}`} className="font-bold underline hover:text-red-700">{dojo.email}</a>.
+            </div>
           </div>
         </div>
       </section>
