@@ -33,6 +33,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}/kyokushin-karate-amiens`,
       lastModified: new Date('2026-03-10'),
     },
+    {
+      url: `${SITE_URL}/camp-automne-kyokushin-2026`,
+      lastModified: new Date('2026-09-12'),
+    },
   ];
 
   try {

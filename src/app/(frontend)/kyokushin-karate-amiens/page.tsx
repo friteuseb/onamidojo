@@ -16,6 +16,7 @@ import {
   Instagram,
 } from 'lucide-react';
 import InstagramEmbedGrid from './InstagramEmbedGrid';
+import CampAutomneBanner from '@/components/CampAutomneBanner';
 
 export const revalidate = 300;
 
@@ -175,6 +176,9 @@ export default function KyokushinKarateAmiensPage() {
           </p>
         </div>
       </header>
+
+      {/* Camp d'automne WKB France (masqué automatiquement après l'événement) */}
+      <CampAutomneBanner />
 
       {/* Qu'est-ce que le Kyokushin ? */}
       <section className="py-24 relative overflow-hidden">

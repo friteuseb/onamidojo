@@ -18,6 +18,7 @@ import {
   Shirt
 } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
+import CampAutomneBanner from '@/components/CampAutomneBanner';
 import { getPosts, getTeamMembers, getHomepage } from '@/lib/payload-helpers';
 
 export const revalidate = 300;
@@ -404,6 +405,9 @@ export default async function OnamiDojoHome() {
           </div>
         </div>
       </section>
+
+      {/* Camp d'automne WKB France (masqué automatiquement après l'événement) */}
+      <CampAutomneBanner />
 
       {/* Introduction Styles Section */}
       <section id="disciplines" className="py-24 relative overflow-hidden">

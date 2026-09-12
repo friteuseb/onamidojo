@@ -27,6 +27,7 @@ export default function Header() {
                 <div className="bg-white border border-slate-200 shadow-lg rounded-sm py-2 min-w-[200px]">
                   <Link href="/kempo-karate-amiens" className="block px-4 py-2 text-sm text-slate-600 hover:text-red-700 hover:bg-slate-50 transition-colors">Kempo Karaté</Link>
                   <Link href="/kyokushin-karate-amiens" className="block px-4 py-2 text-sm text-slate-600 hover:text-red-700 hover:bg-slate-50 transition-colors">Kyokushinkai</Link>
+                  <Link href="/camp-automne-kyokushin-2026" className="block px-4 py-2 text-sm font-bold text-red-700 hover:bg-slate-50 transition-colors border-t border-slate-100 mt-1 pt-3">Camp d&apos;automne 2026</Link>
                 </div>
               </div>
             </div>
@@ -57,6 +58,7 @@ export default function Header() {
             <Link href="/#disciplines" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Disciplines</Link>
             <Link href="/kempo-karate-amiens" className="block py-2 pl-4 text-sm text-slate-500 hover:text-red-700" onClick={() => setMobileMenuOpen(false)}>→ Kempo Karaté</Link>
             <Link href="/kyokushin-karate-amiens" className="block py-2 pl-4 text-sm text-slate-500 hover:text-red-700" onClick={() => setMobileMenuOpen(false)}>→ Kyokushinkai</Link>
+            <Link href="/camp-automne-kyokushin-2026" className="block py-2 pl-4 text-sm font-bold text-red-700" onClick={() => setMobileMenuOpen(false)}>→ Camp d&apos;automne 2026</Link>
             <Link href="/#instructeurs" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Instructeurs</Link>
             <Link href="/#horaires" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Horaires</Link>
             <Link href="/#tarifs" className="block py-2 text-slate-600 hover:text-indigo-900 font-medium" onClick={() => setMobileMenuOpen(false)}>Tarifs</Link>

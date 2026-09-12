@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { escapeHtml } from '@/lib/escape-html';
 
 interface ContactData {
   firstName: string;
@@ -7,15 +8,6 @@ interface ContactData {
   phone: string;
   discipline: string;
   message: string;
-}
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
 }
 
 export async function POST(request: NextRequest) {

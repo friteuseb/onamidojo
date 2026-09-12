@@ -34,6 +34,7 @@ export default function Footer() {
               <li><Link href="/#instructeurs" className="hover:text-white transition-colors">Les Instructeurs</Link></li>
               <li><Link href="/#horaires" className="hover:text-white transition-colors">Planning des Cours</Link></li>
               <li><Link href="/#dojos" className="hover:text-white transition-colors">Notre Dojo</Link></li>
+              <li><Link href="/camp-automne-kyokushin-2026" className="hover:text-white transition-colors">Camp d&apos;automne 2026</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/#contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
