@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Règlement Intérieur | Onami Dojo Amiens',
+  title: 'Règlement intérieur',
   description: 'Règlement intérieur de l\'Onami Dojo, club de karaté Kempo et Kyokushin à Amiens.',
   alternates: {
     canonical: 'https://www.onamidojo.fr/reglement-interieur',

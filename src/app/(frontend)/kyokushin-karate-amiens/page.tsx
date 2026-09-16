@@ -21,7 +21,7 @@ import CampAutomneBanner from '@/components/CampAutomneBanner';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Karaté Kyokushinkai à Amiens | Full Contact Traditionnel | Onami Dojo',
+  title: 'Karaté Kyokushinkai à Amiens | Full Contact Traditionnel',
   description:
     "Pratiquez le Karaté Kyokushinkai à Amiens au Onami Dojo. L'école de l'ultime vérité : karaté full contact, conditionnement physique, mental d'acier. Ados et adultes. 2 cours d'essai gratuits.",
   alternates: {

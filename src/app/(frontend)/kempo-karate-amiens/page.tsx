@@ -17,7 +17,7 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Kempo Karaté à Amiens | Cours Adultes, Ados & Enfants | Onami Dojo',
+  title: 'Kempo Karaté à Amiens | Cours Adultes, Ados & Enfants',
   description:
     "Découvrez le Kempo Karaté à Amiens au Onami Dojo. Art martial japonais complet : frappes, projections, self-défense. Cours pour enfants dès 6 ans, ados et adultes. 2 cours d'essai gratuits.",
   alternates: {

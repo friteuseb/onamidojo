@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { trackEvent } from '@/components/GoogleAnalytics';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -31,6 +32,7 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
+        trackEvent('generate_lead', { form: 'contact', discipline: data.discipline || '' });
         setStatus('success');
         form.reset();
       } else {

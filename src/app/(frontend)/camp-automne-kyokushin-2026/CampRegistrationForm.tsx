@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { trackEvent } from '@/components/GoogleAnalytics';
 import { CAMP_DAYS, CAMP_FORMULES } from '@/data/camp-automne-2026';
 
 const inputClass =
@@ -44,6 +45,7 @@ export default function CampRegistrationForm() {
       });
 
       if (response.ok) {
+        trackEvent('generate_lead', { form: 'camp_automne_2026', formule: data.formule, participants: data.participants });
         setStatus('success');
         form.reset();
         setFormule('3-jours');

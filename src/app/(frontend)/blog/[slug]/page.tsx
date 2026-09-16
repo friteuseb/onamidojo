@@ -8,6 +8,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const revalidate = 3600; // ISR : revalider toutes les heures
 
+// Certains titres importés contiennent des entités HTML (&amp;) qui seraient ré-échappées dans <title>
+const decodeEntities = (text?: string | null) =>
+  (text || '').replace(/&amp;/g, '&').replace(/&#0?39;/g, "'").replace(/&rsquo;/g, '’').replace(/&quot;/g, '"');
+
 export async function generateStaticParams() {
   try {
     const posts = await getPosts(200);
@@ -29,16 +33,18 @@ export async function generateMetadata({
   const imagePath = (post.featuredImagePath as string) || null;
   const featuredImage = post.featuredImage as { url?: string } | null;
   const imageUrl = featuredImage?.url || imagePath;
+  const metaTitle = decodeEntities(post.pageTitle || post.title);
+  const metaDescription = decodeEntities(post.excerpt);
 
   return {
-    title: post.pageTitle || post.title,
-    description: post.excerpt,
+    title: metaTitle,
+    description: metaDescription,
     alternates: {
       canonical: `https://www.onamidojo.fr/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.pageTitle || post.title,
-      description: post.excerpt || '',
+      title: metaTitle,
+      description: metaDescription,
       url: `https://www.onamidojo.fr/blog/${post.slug}`,
       type: 'article',
       ...(imageUrl && {
@@ -54,8 +60,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.pageTitle || post.title,
-      description: post.excerpt || '',
+      title: metaTitle,
+      description: metaDescription,
       ...(imageUrl && { images: [imageUrl] }),
     },
   };

@@ -9,6 +9,9 @@ export default function GoogleAnalytics() {
   const [consent, setConsent] = useState(false);
 
   useEffect(() => {
+    // Ne pas mesurer les visites locales ou de prévisualisation
+    if (!window.location.hostname.endsWith('onamidojo.fr')) return;
+
     const cookie = document.cookie.split('; ').find(c => c.startsWith('cookie_consent='));
     if (cookie?.includes('analytics')) {
       setConsent(true);
@@ -40,4 +43,10 @@ export default function GoogleAnalytics() {
       </Script>
     </>
   );
+}
+
+/** Envoie un événement GA4 si Google Analytics est chargé (consentement donné). */
+export function trackEvent(name: string, params: Record<string, string | number> = {}) {
+  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+  w.gtag?.('event', name, params);
 }

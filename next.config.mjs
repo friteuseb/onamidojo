@@ -10,6 +10,17 @@ const nextConfig = {
         destination: 'https://www.onamidojo.fr/:path*',
         permanent: true,
       },
+      // Articles publiés en double : on garde une seule version par sujet
+      ...[
+        ['passage-grade-kyokushin-guide-complet-kyokushin-expert', 'passage-grade-kyokushin-criteres-preparation'],
+        ['art-martial-apres-35-ans-bien-choisir-son-dojo', 'art-martial-apres-35-ans-choisir-le-bon-dojo'],
+        ['entrainement-arts-martiaux-lhonnetete-paie-onami-dojo', 'dojo-arts-martiaux-lauthenticite-avant-tout'],
+        ['perseverance-arts-martiaux-recit-dun-parcours', 'abandonner-karate-recit-inspirant-arts-martiaux'],
+      ].map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}`,
+        permanent: true,
+      })),
     ];
   },
   images: {
