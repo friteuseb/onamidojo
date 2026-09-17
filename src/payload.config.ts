@@ -54,6 +54,8 @@ export default buildConfig({
             collections: {
               media: {
                 prefix: 'media',
+                // Les fichiers sont publics : on sert directement l'URL Blob sans passer par /api/media/file
+                disablePayloadAccessControl: true,
               },
             },
             token: process.env.BLOB_READ_WRITE_TOKEN,
