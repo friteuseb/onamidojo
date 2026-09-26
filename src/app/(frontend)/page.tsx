@@ -11,7 +11,6 @@ import {
   Phone,
   Mail,
   Download,
-  CalendarCheck,
   FileText,
   CreditCard,
   Stethoscope,
@@ -171,17 +170,6 @@ const DEFAULTS = {
     { title: "Inscription Onami", description: "Saison 2026/2027", file: "/documents/inscription-onami-2026-2027.pdf" },
     { title: "Équipements", description: "Catalogue protections & dogis", file: "/documents/equipements-protection-onami.pdf" },
     { title: "Broderies", description: "Personnalisations & broderies", file: "/documents/personnalisations-broderies-onami.pdf" },
-  ],
-};
-
-// --- Rentrée 2026-2027 (bandeau temporaire, à retirer courant septembre) ---
-const RENTREE = {
-  title: 'C\'est la rentrée !',
-  intro: 'Reprise des cours pour la saison 2026-2027 :',
-  dates: [
-    { course: 'Kempo Karaté — Adultes / Ados', date: 'Lundi 31 août', teacher: 'avec Senseï Olivier' },
-    { course: 'Kempo Karaté — Enfants / Ados', date: 'Mercredi 2 septembre', teacher: 'avec Senseï Olivier' },
-    { course: 'Karaté Kyokushin — Adultes / Ados', date: 'Jeudi 3 septembre', teacher: 'avec Senseï Xavier' },
   ],
 };
 
@@ -374,38 +362,6 @@ export default async function OnamiDojoHome() {
           </p>
         </div>
       </header>
-
-      {/* Bandeau Rentrée (temporaire — saison 2026-2027) */}
-      <section aria-labelledby="rentree-title" className="bg-red-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
-          <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-            <div className="flex items-center gap-3 md:flex-shrink-0">
-              <CalendarCheck className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" aria-hidden="true" />
-              <div>
-                <h2 id="rentree-title" className="text-2xl md:text-3xl font-serif font-bold leading-tight">
-                  {RENTREE.title}
-                </h2>
-                <p className="text-red-100 text-sm">{RENTREE.intro}</p>
-              </div>
-            </div>
-            <ul className="grid sm:grid-cols-3 gap-4 flex-1 w-full">
-              {RENTREE.dates.map((d, idx) => (
-                <li key={idx} className="bg-red-800/60 border border-red-500/40 rounded-sm px-4 py-3 flex flex-col">
-                  <p className="font-bold text-sm leading-tight">{d.course}</p>
-                  <p className="text-white font-serif text-lg mt-1 leading-tight">{d.date}</p>
-                  <p className="text-red-100 text-xs mt-auto pt-1">{d.teacher}</p>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="#tarifs"
-              className="md:flex-shrink-0 inline-flex items-center justify-center gap-2 bg-white text-red-700 px-6 py-3 rounded-sm font-bold hover:bg-red-50 transition-colors"
-            >
-              S&apos;inscrire <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Entraînement avec Quentin Duval (masqué automatiquement après le 1er octobre) */}
       <KickBoxingBanner />
