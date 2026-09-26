@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import CampAutomneBanner from '@/components/CampAutomneBanner';
+import KickBoxingBanner from '@/components/KickBoxingBanner';
 import { getPosts, getTeamMembers, getHomepage } from '@/lib/payload-helpers';
 
 export const revalidate = 300;
@@ -405,6 +406,9 @@ export default async function OnamiDojoHome() {
           </div>
         </div>
       </section>
+
+      {/* Entraînement avec Quentin Duval (masqué automatiquement après le 1er octobre) */}
+      <KickBoxingBanner />
 
       {/* Camp d'automne WKB France (masqué automatiquement après l'événement) */}
       <CampAutomneBanner />
